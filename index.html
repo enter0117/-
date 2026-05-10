@@ -1,0 +1,3211 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>✦ Bunny's Guild ✦ キャストルールブック</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fdf6ee;
+    --blush: #f7ddd4;
+    --rose: #e8a99a;
+    --dusty-rose: #c97a6e;
+    --wine: #8b3a3a;
+    --deep: #3d1a1a;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --sage: #8aab8c;
+    --sky: #a8c4d4;
+    --lavender: #c4b0d4;
+    --white: #fffaf6;
+    --shadow: rgba(61,26,26,0.12);
+    --card-bg: rgba(255,250,246,0.92);
+  }
+
+- { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+background: var(–cream);
+color: var(–deep);
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+/* ===== BACKGROUND ===== */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse at 20% 0%, rgba(232,169,154,0.25) 0%, transparent 50%),
+radial-gradient(ellipse at 80% 100%, rgba(196,176,212,0.2) 0%, transparent 50%),
+radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.08) 0%, transparent 70%);
+pointer-events: none;
+z-index: 0;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(253,246,238,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(201,169,110,0.3);
+padding: 10px 16px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 8px;
+}
+
+.header-left {
+display: flex;
+align-items: center;
+gap: 8px;
+flex: 1;
+}
+
+.back-btn {
+display: none;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 1.5px solid var(–rose);
+background: transparent;
+color: var(–dusty-rose);
+font-size: 18px;
+cursor: pointer;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.back-btn.visible { display: flex; }
+
+.app-title {
+font-family: ‘Cinzel Decorative’, serif;
+font-size: 13px;
+color: var(–wine);
+letter-spacing: 0.05em;
+line-height: 1.2;
+}
+
+.app-title span {
+display: block;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 10px;
+font-weight: 300;
+color: var(–dusty-rose);
+letter-spacing: 0.15em;
+}
+
+.header-actions {
+display: flex;
+gap: 6px;
+}
+
+.icon-btn {
+width: 36px;
+height: 36px;
+border-radius: 50%;
+border: 1.5px solid rgba(201,169,110,0.4);
+background: var(–white);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+font-size: 16px;
+transition: all 0.2s;
+color: var(–wine);
+}
+
+.icon-btn:active { transform: scale(0.93); background: var(–blush); }
+
+/* ===== MAIN CONTAINER ===== */
+.container { position: relative; z-index: 1; }
+
+/* ===== PAGE MANAGEMENT ===== */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ===== HOME PAGE ===== */
+.hero {
+padding: 24px 20px 16px;
+text-align: center;
+}
+
+.hero-badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: linear-gradient(135deg, var(–gold-light), var(–blush));
+border: 1px solid var(–gold);
+border-radius: 20px;
+padding: 5px 14px;
+font-size: 11px;
+letter-spacing: 0.15em;
+color: var(–wine);
+margin-bottom: 14px;
+}
+
+.hero-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 28px;
+color: var(–wine);
+line-height: 1.3;
+margin-bottom: 6px;
+}
+
+.hero-sub {
+font-size: 12px;
+color: var(–dusty-rose);
+letter-spacing: 0.1em;
+margin-bottom: 16px;
+}
+
+/* Progress bar */
+.progress-card {
+margin: 0 16px 20px;
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.3);
+border-radius: 16px;
+padding: 14px 16px;
+box-shadow: 0 2px 12px var(–shadow);
+}
+
+.progress-label {
+display: flex;
+justify-content: space-between;
+font-size: 11px;
+color: var(–dusty-rose);
+margin-bottom: 8px;
+}
+
+.progress-bar-track {
+height: 6px;
+background: var(–blush);
+border-radius: 3px;
+overflow: hidden;
+}
+
+.progress-bar-fill {
+height: 100%;
+background: linear-gradient(90deg, var(–rose), var(–gold));
+border-radius: 3px;
+transition: width 0.5s ease;
+}
+
+/* Important Notice */
+.notice-card {
+margin: 0 16px 20px;
+background: linear-gradient(135deg, rgba(139,58,58,0.08), rgba(232,169,154,0.15));
+border: 1.5px solid var(–rose);
+border-radius: 16px;
+padding: 14px 16px;
+position: relative;
+overflow: hidden;
+}
+
+.notice-card::before {
+content: ‘✦’;
+position: absolute;
+right: -10px;
+top: -10px;
+font-size: 60px;
+color: rgba(232,169,154,0.15);
+}
+
+.notice-title {
+font-size: 11px;
+letter-spacing: 0.15em;
+color: var(–wine);
+font-weight: 700;
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.notice-item {
+font-size: 12.5px;
+color: var(–deep);
+line-height: 1.8;
+padding-left: 12px;
+border-left: 2px solid var(–rose);
+margin-bottom: 6px;
+}
+
+.notice-item:last-child { margin-bottom: 0; }
+
+/* Category Grid */
+.section-title {
+font-size: 11px;
+letter-spacing: 0.2em;
+color: var(–dusty-rose);
+padding: 0 20px 10px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.section-title::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: linear-gradient(90deg, rgba(201,169,110,0.4), transparent);
+}
+
+.category-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+padding: 0 16px 20px;
+}
+
+.category-card {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.25);
+border-radius: 14px;
+padding: 14px 12px;
+cursor: pointer;
+transition: all 0.2s;
+box-shadow: 0 2px 8px var(–shadow);
+position: relative;
+overflow: hidden;
+}
+
+.category-card::after {
+content: ‘’;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+height: 3px;
+opacity: 0;
+transition: opacity 0.2s;
+}
+
+.category-card:active { transform: scale(0.97); box-shadow: 0 1px 4px var(–shadow); }
+
+.cat-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+
+.cat-name {
+font-size: 12px;
+font-weight: 700;
+color: var(–wine);
+line-height: 1.3;
+margin-bottom: 3px;
+}
+
+.cat-count {
+font-size: 10px;
+color: var(–dusty-rose);
+}
+
+.cat-read-badge {
+position: absolute;
+top: 8px;
+right: 8px;
+width: 18px;
+height: 18px;
+border-radius: 50%;
+background: var(–sage);
+color: white;
+font-size: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+/* Quick Links */
+.quick-links {
+display: flex;
+gap: 10px;
+padding: 0 16px 24px;
+overflow-x: auto;
+scrollbar-width: none;
+}
+
+.quick-links::-webkit-scrollbar { display: none; }
+
+.quick-link {
+flex-shrink: 0;
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.3);
+border-radius: 20px;
+padding: 8px 16px;
+font-size: 12px;
+color: var(–wine);
+cursor: pointer;
+white-space: nowrap;
+transition: all 0.2s;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.quick-link:active { background: var(–blush); }
+
+/* ===== SEARCH ===== */
+.search-wrap {
+padding: 16px;
+}
+
+.search-box {
+display: flex;
+align-items: center;
+background: var(–white);
+border: 1.5px solid rgba(201,169,110,0.4);
+border-radius: 24px;
+padding: 10px 16px;
+gap: 10px;
+box-shadow: 0 2px 8px var(–shadow);
+}
+
+.search-box input {
+flex: 1;
+border: none;
+background: transparent;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 14px;
+color: var(–deep);
+outline: none;
+}
+
+.search-box input::placeholder { color: rgba(61,26,26,0.35); }
+
+.search-icon { color: var(–gold); font-size: 16px; }
+
+.search-results { padding: 0 16px 24px; }
+
+.search-result-item {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 8px;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.search-result-item:active { background: var(–blush); }
+
+.sri-cat { font-size: 10px; color: var(–dusty-rose); letter-spacing: 0.1em; margin-bottom: 4px; }
+.sri-title { font-size: 13px; font-weight: 700; color: var(–wine); margin-bottom: 4px; }
+.sri-preview { font-size: 12px; color: var(–deep); line-height: 1.5; }
+.highlight { background: rgba(232,169,154,0.4); border-radius: 3px; padding: 0 2px; }
+
+/* ===== RULE LIST PAGE ===== */
+.page-header {
+padding: 20px 20px 12px;
+border-bottom: 1px solid rgba(201,169,110,0.2);
+margin-bottom: 4px;
+}
+
+.page-header-cat { font-size: 11px; color: var(–dusty-rose); letter-spacing: 0.15em; margin-bottom: 4px; }
+.page-header-title { font-size: 22px; font-family: ‘Cormorant Garamond’, serif; color: var(–wine); }
+
+.rule-list { padding: 12px 16px 24px; }
+
+.rule-item {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 14px;
+padding: 14px 16px;
+margin-bottom: 10px;
+cursor: pointer;
+transition: all 0.2s;
+box-shadow: 0 1px 6px var(–shadow);
+display: flex;
+align-items: flex-start;
+gap: 12px;
+}
+
+.rule-item:active { transform: scale(0.98); }
+
+.rule-item.important { border-color: var(–rose); border-width: 1.5px; }
+
+.rule-icon-wrap {
+width: 40px;
+height: 40px;
+border-radius: 12px;
+background: linear-gradient(135deg, var(–blush), var(–gold-light));
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+flex-shrink: 0;
+}
+
+.rule-content { flex: 1; min-width: 0; }
+
+.rule-title {
+font-size: 13.5px;
+font-weight: 700;
+color: var(–wine);
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.badge-important {
+background: var(–dusty-rose);
+color: white;
+font-size: 9px;
+padding: 1px 6px;
+border-radius: 8px;
+font-weight: 400;
+letter-spacing: 0.05em;
+}
+
+.badge-new {
+background: var(–sage);
+color: white;
+font-size: 9px;
+padding: 1px 6px;
+border-radius: 8px;
+font-weight: 400;
+}
+
+.rule-preview {
+font-size: 12px;
+color: rgba(61,26,26,0.65);
+line-height: 1.5;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.rule-read-check {
+width: 22px;
+height: 22px;
+border-radius: 50%;
+border: 2px solid var(–rose);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 12px;
+flex-shrink: 0;
+transition: all 0.2s;
+color: transparent;
+margin-top: 2px;
+}
+
+.rule-read-check.checked {
+background: var(–sage);
+border-color: var(–sage);
+color: white;
+}
+
+/* ===== RULE DETAIL ===== */
+.rule-detail-wrap { padding: 16px 16px 32px; }
+
+.rule-detail-header {
+background: linear-gradient(135deg, var(–blush), rgba(201,169,110,0.15));
+border: 1px solid rgba(201,169,110,0.3);
+border-radius: 16px;
+padding: 18px 16px;
+margin-bottom: 16px;
+position: relative;
+overflow: hidden;
+}
+
+.rule-detail-icon {
+font-size: 32px;
+margin-bottom: 8px;
+display: block;
+}
+
+.rule-detail-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(–wine);
+margin-bottom: 6px;
+}
+
+.rule-detail-cat {
+font-size: 11px;
+color: var(–dusty-rose);
+letter-spacing: 0.15em;
+}
+
+.rule-section {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 14px;
+padding: 16px;
+margin-bottom: 12px;
+}
+
+.rule-section-title {
+font-size: 11px;
+letter-spacing: 0.2em;
+color: var(–gold);
+margin-bottom: 10px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.rule-section-title::before { content: ‘✦’; }
+
+.rule-body {
+font-size: 13.5px;
+line-height: 1.9;
+color: var(–deep);
+}
+
+.rule-body p { margin-bottom: 8px; }
+.rule-body p:last-child { margin-bottom: 0; }
+
+.rule-point {
+display: flex;
+gap: 8px;
+margin-bottom: 8px;
+font-size: 13px;
+line-height: 1.7;
+color: var(–deep);
+}
+
+.rule-point-dot {
+width: 18px;
+height: 18px;
+background: linear-gradient(135deg, var(–rose), var(–gold));
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 9px;
+color: white;
+flex-shrink: 0;
+margin-top: 2px;
+}
+
+.warning-box {
+background: rgba(139,58,58,0.06);
+border: 1.5px solid var(–dusty-rose);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 10px;
+}
+
+.warning-box-title {
+font-size: 11px;
+color: var(–dusty-rose);
+font-weight: 700;
+letter-spacing: 0.1em;
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.warning-box-body { font-size: 12.5px; line-height: 1.8; color: var(–deep); }
+
+.good-box {
+background: rgba(138,171,140,0.1);
+border: 1.5px solid var(–sage);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 10px;
+}
+
+.good-box-title {
+font-size: 11px;
+color: var(–sage);
+font-weight: 700;
+letter-spacing: 0.1em;
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.read-complete-btn {
+width: 100%;
+padding: 14px;
+border-radius: 14px;
+border: none;
+background: linear-gradient(135deg, var(–rose), var(–gold));
+color: white;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.1em;
+cursor: pointer;
+margin-top: 16px;
+transition: all 0.2s;
+box-shadow: 0 4px 16px rgba(232,169,154,0.4);
+}
+
+.read-complete-btn:active { transform: scale(0.97); }
+.read-complete-btn.done {
+background: linear-gradient(135deg, var(–sage), #6a9b6e);
+box-shadow: 0 4px 16px rgba(138,171,140,0.4);
+}
+
+/* ===== CHECKLIST ===== */
+.checklist-wrap { padding: 16px 16px 32px; }
+
+.checklist-intro {
+background: linear-gradient(135deg, rgba(196,176,212,0.2), rgba(168,196,212,0.2));
+border: 1px solid var(–lavender);
+border-radius: 14px;
+padding: 14px;
+margin-bottom: 16px;
+font-size: 12.5px;
+line-height: 1.8;
+color: var(–deep);
+}
+
+.checklist-group { margin-bottom: 16px; }
+
+.checklist-group-title {
+font-size: 11px;
+letter-spacing: 0.2em;
+color: var(–dusty-rose);
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.checklist-group-title::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: rgba(201,169,110,0.3);
+}
+
+.check-item {
+display: flex;
+align-items: flex-start;
+gap: 12px;
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 8px;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.check-item:active { background: var(–blush); }
+
+.check-box {
+width: 22px;
+height: 22px;
+border-radius: 6px;
+border: 2px solid var(–rose);
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+transition: all 0.2s;
+margin-top: 1px;
+}
+
+.check-box.checked {
+background: var(–sage);
+border-color: var(–sage);
+color: white;
+font-size: 13px;
+}
+
+.check-text {
+font-size: 13px;
+line-height: 1.6;
+color: var(–deep);
+flex: 1;
+}
+
+.check-item.checked-item .check-text {
+text-decoration: line-through;
+color: rgba(61,26,26,0.45);
+}
+
+.checklist-progress {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.3);
+border-radius: 14px;
+padding: 14px;
+margin-bottom: 16px;
+text-align: center;
+}
+
+.checklist-progress .big-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 40px;
+color: var(–wine);
+line-height: 1;
+}
+
+.checklist-progress .prog-label {
+font-size: 11px;
+color: var(–dusty-rose);
+margin-top: 4px;
+}
+
+/* ===== NG COLLECTION ===== */
+.ng-wrap { padding: 16px 16px 32px; }
+
+.ng-intro {
+background: rgba(139,58,58,0.06);
+border: 1.5px solid var(–dusty-rose);
+border-radius: 14px;
+padding: 14px;
+margin-bottom: 16px;
+font-size: 12.5px;
+line-height: 1.8;
+color: var(–deep);
+}
+
+.ng-item {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 14px;
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.ng-header {
+padding: 14px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+}
+
+.ng-icon {
+width: 36px;
+height: 36px;
+border-radius: 10px;
+background: rgba(139,58,58,0.1);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+flex-shrink: 0;
+}
+
+.ng-title { font-size: 13px; font-weight: 700; color: var(–wine); flex: 1; }
+.ng-chevron { font-size: 12px; color: var(–dusty-rose); transition: transform 0.2s; }
+.ng-item.open .ng-chevron { transform: rotate(180deg); }
+
+.ng-body {
+display: none;
+padding: 0 16px 14px;
+border-top: 1px solid rgba(201,169,110,0.15);
+padding-top: 12px;
+}
+
+.ng-item.open .ng-body { display: block; }
+
+.ng-bad {
+background: rgba(139,58,58,0.05);
+border-left: 3px solid var(–dusty-rose);
+border-radius: 0 8px 8px 0;
+padding: 8px 12px;
+margin-bottom: 8px;
+font-size: 12.5px;
+line-height: 1.7;
+color: var(–deep);
+}
+
+.ng-good {
+background: rgba(138,171,140,0.1);
+border-left: 3px solid var(–sage);
+border-radius: 0 8px 8px 0;
+padding: 8px 12px;
+font-size: 12.5px;
+line-height: 1.7;
+color: var(–deep);
+}
+
+.ng-label {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.1em;
+margin-bottom: 3px;
+}
+
+.ng-label.bad { color: var(–dusty-rose); }
+.ng-label.good { color: var(–sage); }
+
+/* ===== Q&A ===== */
+.qa-wrap { padding: 16px 16px 32px; }
+
+.qa-item {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 14px;
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.qa-question {
+padding: 14px 16px;
+display: flex;
+align-items: flex-start;
+gap: 10px;
+cursor: pointer;
+}
+
+.qa-q-icon {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(–rose), var(–dusty-rose));
+color: white;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+margin-top: 1px;
+}
+
+.qa-q-text { font-size: 13px; font-weight: 700; color: var(–wine); flex: 1; line-height: 1.5; }
+.qa-chevron { font-size: 12px; color: var(–dusty-rose); transition: transform 0.2s; margin-top: 4px; }
+.qa-item.open .qa-chevron { transform: rotate(180deg); }
+
+.qa-answer {
+display: none;
+padding: 0 16px 14px;
+border-top: 1px solid rgba(201,169,110,0.15);
+padding-top: 12px;
+}
+
+.qa-item.open .qa-answer { display: flex; gap: 10px; }
+
+.qa-a-icon {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(–gold-light), var(–gold));
+color: white;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+}
+
+.qa-a-text { font-size: 13px; line-height: 1.8; color: var(–deep); flex: 1; }
+
+/* ===== QUIZ ===== */
+.quiz-wrap { padding: 16px 16px 32px; }
+
+.quiz-start {
+text-align: center;
+padding: 20px 0;
+}
+
+.quiz-start-icon { font-size: 48px; margin-bottom: 12px; }
+
+.quiz-start-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 24px;
+color: var(–wine);
+margin-bottom: 8px;
+}
+
+.quiz-start-desc {
+font-size: 12.5px;
+color: var(–dusty-rose);
+line-height: 1.8;
+margin-bottom: 24px;
+}
+
+.start-btn {
+display: inline-block;
+background: linear-gradient(135deg, var(–rose), var(–dusty-rose));
+color: white;
+border: none;
+padding: 14px 36px;
+border-radius: 28px;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 15px;
+font-weight: 700;
+letter-spacing: 0.1em;
+cursor: pointer;
+box-shadow: 0 4px 16px rgba(232,169,154,0.5);
+transition: all 0.2s;
+}
+
+.start-btn:active { transform: scale(0.97); }
+
+.quiz-question-area { display: none; }
+
+.quiz-progress-wrap {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 16px;
+}
+
+.quiz-progress-num { font-size: 12px; color: var(–dusty-rose); white-space: nowrap; }
+
+.quiz-bar-track {
+flex: 1;
+height: 4px;
+background: var(–blush);
+border-radius: 2px;
+}
+
+.quiz-bar-fill {
+height: 100%;
+background: linear-gradient(90deg, var(–rose), var(–gold));
+border-radius: 2px;
+transition: width 0.3s;
+}
+
+.quiz-q-card {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.3);
+border-radius: 16px;
+padding: 18px 16px;
+margin-bottom: 14px;
+}
+
+.quiz-q-num {
+font-size: 10px;
+letter-spacing: 0.2em;
+color: var(–gold);
+margin-bottom: 8px;
+}
+
+.quiz-q-text {
+font-size: 14px;
+font-weight: 700;
+color: var(–deep);
+line-height: 1.7;
+}
+
+.quiz-options { margin-bottom: 12px; }
+
+.quiz-option {
+display: flex;
+align-items: center;
+gap: 12px;
+background: var(–white);
+border: 1.5px solid rgba(201,169,110,0.25);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 8px;
+cursor: pointer;
+transition: all 0.2s;
+font-size: 13px;
+color: var(–deep);
+}
+
+.quiz-option:active { background: var(–blush); }
+
+.quiz-option.selected { border-color: var(–rose); background: rgba(232,169,154,0.1); }
+.quiz-option.correct { border-color: var(–sage); background: rgba(138,171,140,0.1); color: var(–deep); }
+.quiz-option.wrong { border-color: var(–dusty-rose); background: rgba(139,58,58,0.06); }
+
+.quiz-option-bullet {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+border: 1.5px solid rgba(201,169,110,0.4);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 11px;
+color: var(–dusty-rose);
+flex-shrink: 0;
+font-weight: 700;
+}
+
+.quiz-option.correct .quiz-option-bullet { background: var(–sage); border-color: var(–sage); color: white; }
+.quiz-option.wrong .quiz-option-bullet { background: var(–dusty-rose); border-color: var(–dusty-rose); color: white; }
+
+.quiz-explanation {
+display: none;
+background: rgba(168,196,212,0.15);
+border: 1px solid var(–sky);
+border-radius: 12px;
+padding: 12px 14px;
+margin-bottom: 12px;
+font-size: 12.5px;
+line-height: 1.8;
+color: var(–deep);
+}
+
+.quiz-next-btn {
+width: 100%;
+padding: 13px;
+border-radius: 12px;
+border: none;
+background: linear-gradient(135deg, var(–rose), var(–gold));
+color: white;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+cursor: pointer;
+display: none;
+transition: all 0.2s;
+}
+
+.quiz-next-btn:active { transform: scale(0.97); }
+
+.quiz-result { display: none; text-align: center; padding: 20px 0; }
+
+.quiz-result-circle {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(–blush), var(–gold-light));
+border: 3px solid var(–gold);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin: 0 auto 16px;
+}
+
+.quiz-score-big {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 32px;
+color: var(–wine);
+line-height: 1;
+}
+
+.quiz-score-label { font-size: 10px; color: var(–dusty-rose); }
+
+.quiz-result-msg {
+font-size: 14px;
+font-weight: 700;
+color: var(–wine);
+margin-bottom: 8px;
+}
+
+.quiz-result-sub {
+font-size: 12px;
+color: var(–dusty-rose);
+line-height: 1.8;
+margin-bottom: 20px;
+}
+
+.retry-btn {
+background: transparent;
+border: 1.5px solid var(–rose);
+color: var(–dusty-rose);
+padding: 11px 28px;
+border-radius: 24px;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 13px;
+cursor: pointer;
+margin-right: 10px;
+}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(253,246,238,0.97);
+backdrop-filter: blur(12px);
+border-top: 1px solid rgba(201,169,110,0.25);
+display: flex;
+z-index: 100;
+padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 4px;
+cursor: pointer;
+transition: all 0.2s;
+gap: 3px;
+}
+
+.nav-item:active { opacity: 0.7; }
+
+.nav-icon { font-size: 20px; }
+.nav-label { font-size: 9px; letter-spacing: 0.05em; color: rgba(61,26,26,0.45); }
+.nav-item.active .nav-label { color: var(–wine); font-weight: 700; }
+.nav-item.active .nav-icon { filter: drop-shadow(0 0 4px rgba(232,169,154,0.6)); }
+
+/* ===== TOAST ===== */
+.toast {
+position: fixed;
+bottom: 72px;
+left: 50%;
+transform: translateX(-50%) translateY(20px);
+background: var(–deep);
+color: white;
+padding: 10px 20px;
+border-radius: 24px;
+font-size: 13px;
+opacity: 0;
+transition: all 0.3s;
+z-index: 200;
+white-space: nowrap;
+pointer-events: none;
+}
+
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Bottom safe area */
+.page { padding-bottom: 64px; }
+
+/* ===== ADMIN MODE ===== */
+.admin-bar {
+display: none;
+background: linear-gradient(135deg, #2d1a2e, #4a1a2e);
+border-bottom: 2px solid #c97a6e;
+padding: 8px 16px;
+align-items: center;
+justify-content: space-between;
+gap: 8px;
+position: sticky;
+top: 57px;
+z-index: 99;
+}
+.admin-bar.visible { display: flex; }
+.admin-bar-label {
+font-size: 11px;
+color: #e8d5a3;
+letter-spacing: 0.2em;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.admin-bar-actions { display: flex; gap: 8px; }
+.admin-pill {
+padding: 5px 14px;
+border-radius: 16px;
+border: 1px solid rgba(232,169,154,0.5);
+background: rgba(232,169,154,0.12);
+color: #e8d5a3;
+font-size: 11px;
+cursor: pointer;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+letter-spacing: 0.05em;
+transition: all 0.2s;
+}
+.admin-pill:active { background: rgba(232,169,154,0.3); }
+.admin-pill.danger { border-color: rgba(201,120,110,0.6); color: #f0a898; }
+
+/* Edit button on rule items */
+.edit-rule-btn {
+display: none;
+align-items: center;
+gap: 4px;
+background: rgba(201,169,110,0.15);
+border: 1px solid rgba(201,169,110,0.4);
+color: var(–gold);
+padding: 4px 10px;
+border-radius: 10px;
+font-size: 11px;
+cursor: pointer;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+transition: all 0.2s;
+white-space: nowrap;
+flex-shrink: 0;
+}
+.admin-active .edit-rule-btn { display: flex; }
+.edit-rule-btn:active { background: rgba(201,169,110,0.3); }
+
+/* Admin edit badge on cards */
+.admin-active .category-card { border-style: dashed; }
+.admin-active .rule-item { border-style: dashed; }
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(30,10,10,0.7);
+z-index: 300;
+align-items: flex-end;
+justify-content: center;
+backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+
+.modal-sheet {
+background: var(–cream);
+border-radius: 24px 24px 0 0;
+width: 100%;
+max-height: 92vh;
+overflow-y: auto;
+padding: 0 0 40px;
+animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+from { transform: translateY(100%); }
+to { transform: translateY(0); }
+}
+
+.modal-handle {
+width: 36px;
+height: 4px;
+background: rgba(201,169,110,0.4);
+border-radius: 2px;
+margin: 12px auto 0;
+}
+
+.modal-header {
+padding: 16px 20px 12px;
+border-bottom: 1px solid rgba(201,169,110,0.2);
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.modal-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+color: var(–wine);
+}
+
+.modal-close {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+border: 1.5px solid rgba(201,169,110,0.3);
+background: var(–blush);
+color: var(–wine);
+font-size: 16px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.modal-body { padding: 16px 20px; }
+
+/* Edit form */
+.edit-field { margin-bottom: 16px; }
+
+.edit-label {
+font-size: 11px;
+letter-spacing: 0.15em;
+color: var(–dusty-rose);
+margin-bottom: 6px;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.edit-input, .edit-textarea {
+width: 100%;
+background: var(–white);
+border: 1.5px solid rgba(201,169,110,0.35);
+border-radius: 10px;
+padding: 10px 12px;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 13px;
+color: var(–deep);
+outline: none;
+transition: border-color 0.2s;
+resize: vertical;
+}
+
+.edit-input:focus, .edit-textarea:focus {
+border-color: var(–rose);
+box-shadow: 0 0 0 3px rgba(232,169,154,0.15);
+}
+
+.edit-textarea { min-height: 80px; line-height: 1.7; }
+
+.edit-section-block {
+background: rgba(201,169,110,0.06);
+border: 1px solid rgba(201,169,110,0.2);
+border-radius: 12px;
+padding: 12px;
+margin-bottom: 10px;
+}
+
+.edit-section-label {
+font-size: 10px;
+letter-spacing: 0.15em;
+color: var(–gold);
+margin-bottom: 8px;
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.edit-type-tag {
+display: inline-block;
+background: var(–blush);
+color: var(–wine);
+font-size: 9px;
+padding: 2px 7px;
+border-radius: 6px;
+margin-left: 6px;
+}
+
+.edit-save-btn {
+width: 100%;
+padding: 14px;
+border-radius: 14px;
+border: none;
+background: linear-gradient(135deg, var(–wine), var(–dusty-rose));
+color: white;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+letter-spacing: 0.1em;
+cursor: pointer;
+margin-top: 8px;
+transition: all 0.2s;
+box-shadow: 0 4px 16px rgba(139,58,58,0.3);
+}
+.edit-save-btn:active { transform: scale(0.98); }
+
+.edit-reset-btn {
+width: 100%;
+padding: 11px;
+border-radius: 12px;
+border: 1.5px solid rgba(139,58,58,0.3);
+background: transparent;
+color: var(–dusty-rose);
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 12px;
+cursor: pointer;
+margin-top: 8px;
+}
+
+/* Login modal */
+.login-modal-body { padding: 24px 24px 16px; text-align: center; }
+.login-icon { font-size: 40px; margin-bottom: 12px; }
+.login-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(–wine);
+margin-bottom: 6px;
+}
+.login-sub { font-size: 12px; color: var(–dusty-rose); margin-bottom: 20px; }
+
+.login-input-wrap { position: relative; margin-bottom: 12px; }
+.login-input {
+width: 100%;
+padding: 12px 44px 12px 16px;
+border: 1.5px solid rgba(201,169,110,0.4);
+border-radius: 12px;
+font-size: 16px;
+background: var(–white);
+color: var(–deep);
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+outline: none;
+letter-spacing: 0.1em;
+}
+.login-input:focus { border-color: var(–rose); }
+.login-eye {
+position: absolute;
+right: 12px;
+top: 50%;
+transform: translateY(-50%);
+cursor: pointer;
+font-size: 18px;
+color: var(–dusty-rose);
+}
+.login-btn {
+width: 100%;
+padding: 13px;
+border-radius: 12px;
+border: none;
+background: linear-gradient(135deg, var(–wine), var(–dusty-rose));
+color: white;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+font-size: 14px;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.2s;
+}
+.login-btn:active { transform: scale(0.98); }
+.login-error {
+color: var(–dusty-rose);
+font-size: 12px;
+margin-top: 8px;
+display: none;
+}
+
+/* Admin panel page */
+.admin-panel-wrap { padding: 16px 16px 32px; }
+
+.admin-section-card {
+background: var(–card-bg);
+border: 1px solid rgba(201,169,110,0.25);
+border-radius: 14px;
+margin-bottom: 10px;
+overflow: hidden;
+}
+
+.admin-section-header {
+padding: 14px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+cursor: pointer;
+background: linear-gradient(135deg, rgba(232,169,154,0.08), rgba(201,169,110,0.05));
+}
+
+.admin-section-icon {
+font-size: 20px;
+width: 36px;
+text-align: center;
+}
+
+.admin-section-name { font-size: 13px; font-weight: 700; color: var(–wine); flex: 1; }
+.admin-section-count { font-size: 11px; color: var(–dusty-rose); }
+
+.admin-rule-list { padding: 8px 12px 12px; border-top: 1px solid rgba(201,169,110,0.15); }
+
+.admin-rule-row {
+display: flex;
+align-items: center;
+gap: 10px;
+padding: 8px 10px;
+border-radius: 10px;
+margin-bottom: 4px;
+background: var(–white);
+border: 1px solid rgba(201,169,110,0.15);
+}
+
+.admin-rule-row-text {
+flex: 1;
+font-size: 12.5px;
+color: var(–deep);
+line-height: 1.4;
+}
+
+.admin-rule-row-modified {
+font-size: 9px;
+color: var(–sage);
+background: rgba(138,171,140,0.12);
+padding: 2px 6px;
+border-radius: 6px;
+white-space: nowrap;
+}
+
+.admin-edit-btn-sm {
+padding: 5px 12px;
+border-radius: 8px;
+border: 1px solid rgba(201,169,110,0.4);
+background: rgba(201,169,110,0.1);
+color: var(–wine);
+font-size: 11px;
+cursor: pointer;
+font-family: ‘Zen Kaku Gothic New’, sans-serif;
+white-space: nowrap;
+transition: all 0.2s;
+}
+.admin-edit-btn-sm:active { background: rgba(201,169,110,0.25); }
+
+/* Password change form */
+.pw-change-form { background: var(–card-bg); border: 1px solid rgba(201,169,110,0.25); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
+.pw-change-title { font-size: 12px; font-weight: 700; color: var(–wine); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(8px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.page.active > * { animation: fadeIn 0.25s ease forwards; }
+</style>
+
+</head>
+<body>
+
+<!-- Header -->
+
+<header class="app-header">
+  <div class="header-left">
+    <button class="back-btn" id="backBtn" onclick="goBack()">‹</button>
+    <div class="app-title">
+      Bunny's Guild
+      <span>✦ CAST RULEBOOK ✦</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="showPage('search')" title="検索">🔍</button>
+    <button class="icon-btn" id="adminTriggerBtn" title="管理者" style="opacity:0.35; font-size:14px;" onmousedown="startAdminHold()" onmouseup="cancelAdminHold()" onmouseleave="cancelAdminHold()" ontouchstart="startAdminHold()" ontouchend="cancelAdminHold()">⚙️</button>
+  </div>
+</header>
+
+<!-- Admin Bar (shown when logged in) -->
+
+<div class="admin-bar" id="adminBar">
+  <div class="admin-bar-label">⚙️ 管理者モード</div>
+  <div class="admin-bar-actions">
+    <button class="admin-pill" onclick="showPage('admin')">編集一覧</button>
+    <button class="admin-pill danger" onclick="logoutAdmin()">退出</button>
+  </div>
+</div>
+
+<!-- Login Modal -->
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-sheet" style="max-height:72vh;">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title">管理者ログイン</div>
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    </div>
+    <div class="login-modal-body">
+      <div class="login-icon">🔐</div>
+      <div class="login-title">妖精専用</div>
+      <div class="login-sub">管理者パスワードを入力してください</div>
+      <div class="login-input-wrap">
+        <input type="password" class="login-input" id="loginInput" placeholder="パスワード" onkeydown="if(event.key==='Enter')doLogin()">
+        <span class="login-eye" onclick="toggleLoginEye()">👁</span>
+      </div>
+      <div class="login-error" id="loginError">パスワードが違います</div>
+      <button class="login-btn" onclick="doLogin()">ログイン ✦</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal (shared for all edit targets) -->
+
+<div class="modal-overlay" id="editModal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-title" id="editModalTitle">編集</div>
+      <button class="modal-close" onclick="closeEditModal()">✕</button>
+    </div>
+    <div class="modal-body" id="editModalBody"></div>
+  </div>
+</div>
+
+<!-- Container -->
+
+<div class="container">
+
+  <!-- ===== HOME PAGE ===== -->
+
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-badge">✦ CAST ONLY ✦</div>
+      <h1 class="hero-title">天界のルール<br>ガイドライン</h1>
+      <p class="hero-sub">Bunny's Guild 公式キャストマニュアル</p>
+    </div>
+
+```
+<div class="progress-card">
+  <div class="progress-label">
+    <span>📖 読了進捗</span>
+    <span id="progressText">0 / 30 ルール</span>
+  </div>
+  <div class="progress-bar-track">
+    <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="notice-card">
+  <div class="notice-title">⚠️ 最重要ルール（常時掲示）</div>
+  <div class="notice-item">プレイヤー様との連絡先・SNS交換は<strong>厳禁</strong>です</div>
+  <div class="notice-item">勤務中の私的なスマホ操作は<strong>禁止</strong>です</div>
+  <div class="notice-item">遅刻・欠勤は必ず<strong>3時間前まで</strong>に連絡</div>
+  <div class="notice-item">トラブルは必ず<strong>即座に妖精に報告</strong></div>
+</div>
+
+<div class="section-title">CATEGORIES</div>
+<div class="category-grid" id="categoryGrid"></div>
+
+<div class="section-title">QUICK ACCESS</div>
+<div class="quick-links">
+  <div class="quick-link" onclick="showPage('checklist')">✅ 新人チェックリスト</div>
+  <div class="quick-link" onclick="showPage('ng')">🚫 接客NG集</div>
+  <div class="quick-link" onclick="showPage('qa')">💬 トラブルQ&A</div>
+  <div class="quick-link" onclick="showPage('quiz')">📝 確認テスト</div>
+</div>
+```
+
+  </div>
+
+  <!-- ===== SEARCH PAGE ===== -->
+
+  <div class="page" id="page-search">
+    <div class="search-wrap">
+      <div class="search-box">
+        <span class="search-icon">✦</span>
+        <input type="text" id="searchInput" placeholder="ルールを検索…（例：遅刻、服装、会計）" oninput="doSearch(this.value)">
+      </div>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div style="text-align:center; padding:30px 0; color:rgba(61,26,26,0.4); font-size:13px;">
+        キーワードを入力してください<br>
+        <span style="font-size:11px;">例：「遅刻」「シーシャ」「会計」</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CATEGORY LIST PAGE ===== -->
+
+  <div class="page" id="page-catlist">
+    <div class="page-header">
+      <div class="page-header-cat" id="catListCatName"></div>
+      <div class="page-header-title" id="catListTitle"></div>
+    </div>
+    <div class="rule-list" id="ruleListContainer"></div>
+  </div>
+
+  <!-- ===== RULE DETAIL PAGE ===== -->
+
+  <div class="page" id="page-detail">
+    <div class="rule-detail-wrap" id="ruleDetailContainer"></div>
+  </div>
+
+  <!-- ===== CHECKLIST PAGE ===== -->
+
+  <div class="page" id="page-checklist">
+    <div class="page-header">
+      <div class="page-header-cat">NEW CAST</div>
+      <div class="page-header-title">新人チェックリスト</div>
+    </div>
+    <div class="checklist-wrap" id="checklistContainer"></div>
+  </div>
+
+  <!-- ===== NG PAGE ===== -->
+
+  <div class="page" id="page-ng">
+    <div class="page-header">
+      <div class="page-header-cat">NG COLLECTION</div>
+      <div class="page-header-title">接客NG集</div>
+    </div>
+    <div class="ng-wrap" id="ngContainer"></div>
+  </div>
+
+  <!-- ===== Q&A PAGE ===== -->
+
+  <div class="page" id="page-qa">
+    <div class="page-header">
+      <div class="page-header-cat">TROUBLE GUIDE</div>
+      <div class="page-header-title">トラブル対応Q&A</div>
+    </div>
+    <div class="qa-wrap" id="qaContainer"></div>
+  </div>
+
+  <!-- ===== QUIZ PAGE ===== -->
+
+  <div class="page" id="page-quiz">
+    <div class="page-header">
+      <div class="page-header-cat">KNOWLEDGE CHECK</div>
+      <div class="page-header-title">確認テスト</div>
+    </div>
+    <div class="quiz-wrap" id="quizContainer"></div>
+  </div>
+
+  <!-- ===== ADMIN PAGE ===== -->
+
+  <div class="page" id="page-admin">
+    <div class="page-header">
+      <div class="page-header-cat">⚙️ ADMIN MODE</div>
+      <div class="page-header-title">コンテンツ管理</div>
+    </div>
+    <div class="admin-panel-wrap" id="adminPanelContainer"></div>
+  </div>
+
+</div>
+
+<!-- Bottom Nav -->
+
+<nav class="bottom-nav">
+  <div class="nav-item active" onclick="showPage('home')" id="nav-home">
+    <span class="nav-icon">🏰</span>
+    <span class="nav-label">ホーム</span>
+  </div>
+  <div class="nav-item" onclick="showPage('search')" id="nav-search">
+    <span class="nav-icon">🔍</span>
+    <span class="nav-label">検索</span>
+  </div>
+  <div class="nav-item" onclick="showPage('checklist')" id="nav-checklist">
+    <span class="nav-icon">✅</span>
+    <span class="nav-label">チェック</span>
+  </div>
+  <div class="nav-item" onclick="showPage('quiz')" id="nav-quiz">
+    <span class="nav-icon">📝</span>
+    <span class="nav-label">テスト</span>
+  </div>
+  <div class="nav-item" onclick="showPage('qa')" id="nav-qa">
+    <span class="nav-icon">💬</span>
+    <span class="nav-label">Q&A</span>
+  </div>
+</nav>
+
+<!-- Toast -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== DATA =====
+const CATEGORIES = [
+  { id:'must',      icon:'🚨', name:'必須ルール',            color:'#fde8e8' },
+  { id:'champagne', icon:'🍾', name:'シャンパン\nノート管理', color:'#fdf0e0' },
+  { id:'attend',    icon:'🕐', name:'出勤・遅刻・欠勤',      color:'#f7ddd4' },
+  { id:'looks',     icon:'💄', name:'衛生・身だしなみ',       color:'#fce8e0' },
+  { id:'ng_act',    icon:'🚫', name:'営業中NG',              color:'#fde8e8' },
+  { id:'service',   icon:'✨', name:'接客基本',               color:'#e8f0e8' },
+  { id:'contact',   icon:'🤝', name:'お客様との\n接触禁止',   color:'#fde8e0' },
+  { id:'shisha',    icon:'🌿', name:'シーシャ\n注文確認',     color:'#e8ede8' },
+  { id:'cashier',   icon:'💰', name:'会計・レジ',             color:'#faf0e0' },
+  { id:'walk',      icon:'🚶', name:'お散歩ルール',           color:'#e8eef8' },
+  { id:'input',     icon:'📋', name:'入力ミス防止',           color:'#f0f0e8' },
+  { id:'double',    icon:'🥂', name:'ダブルドリンク',         color:'#e8f0f8' },
+  { id:'supply',    icon:'🖊️', name:'備品管理',              color:'#f0e8f5' },
+  { id:'sns',       icon:'📱', name:'SNS・写真',              color:'#f5e8f5' },
+  { id:'trouble',   icon:'🆘', name:'トラブル対応',           color:'#fde8e0' },
+];
+
+const RULES = {
+  must: [
+    { id:'mu1', title:'挨拶', important:false, icon:'👋', preview:'出勤・退勤・店外接触時は必ず自分から挨拶',
+      sections:[
+        { title:'基本ルール', body:'出勤時、退勤時、店外での接触時は、必ず<strong>自分から明確に挨拶</strong>してください。新人キャスト、留学生キャストにも徹底してください。' }
+      ]
+    },
+    { id:'mu2', title:'出退勤打刻のタイミング', important:true, icon:'🕐', preview:'準備完了後に出勤打刻。着替え前に退勤打刻',
+      sections:[
+        { title:'出勤打刻', body:'出勤打刻は、<strong>接客準備が完了してから</strong>行ってください。準備完了前の打刻は認められず、遅刻扱いとなります。' },
+        { title:'退勤打刻', body:'退勤打刻は、<strong>着替える前</strong>に行ってください。退勤後に店舗へ残る場合は、必ず事前申告と許可が必要です。事後報告は無効です。' }
+      ]
+    },
+    { id:'mu3', title:'クーポンルール', important:true, icon:'🎫', preview:'使用済みクーポン再利用禁止。内容を毎回確認',
+      sections:[
+        { title:'禁止事項', points:['使用済みクーポンの再利用は禁止','テキーラタワーのクーポンでクライナー6本を提供する行為は禁止','複数種類のテキーラを混ぜて提供する行為は禁止'] },
+        { title:'確認事項', body:'テキーラは「クエルボ／シルバー」のみ使用可能です。クーポン内容は日によって異なるため、必ず内容を確認し、その通りに提供してください。' }
+      ]
+    },
+    { id:'mu4', title:'物品・私物管理', important:true, icon:'📦', preview:'私物には必ず記名。所有者不明は処分対象',
+      sections:[
+        { title:'ルール', points:['物品の配置を把握してください','私物には必ず記名してください','所有者不明の物品は処分対象となります'] }
+      ]
+    },
+    { id:'mu5', title:'卓管理', important:true, icon:'🪑', preview:'卓立て必須。卓番号が不明なら自己判断せずキッチンへ',
+      sections:[
+        { title:'ルール', points:['必ず卓立てを行ってください','入力時は卓番号を必ず確認してください','卓番号が不明な場合は、自己判断せずキッチンへ確認してください'] }
+      ]
+    },
+    { id:'mu6', title:'会計・お見送り', important:true, icon:'💳', preview:'会計後は速やかにお見送り。未精算での会話継続禁止',
+      sections:[
+        { title:'ルール', points:['会計後は速やかにお見送りをしてください','会計後に会話を継続する場合は延長対象です','未精算のまま会話を継続することは禁止です','過度なお見送りは禁止です'] }
+      ]
+    },
+    { id:'mu7', title:'欠勤・遅刻の連絡期限', important:true, icon:'📞', preview:'欠勤・遅刻は14時までに連絡。以降は無断扱い',
+      sections:[
+        { title:'連絡期限', body:'欠勤・遅刻の連絡は<strong>14時まで</strong>に行ってください。14時以降の連絡は無断扱いとなります。' }
+      ]
+    },
+    { id:'mu8', title:'シャンパン・酒の報告', important:true, icon:'🍾', preview:'杯数と場所は必ず報告。報告漏れはバックなし',
+      sections:[
+        { title:'ルール', body:'杯数と場所は必ず報告してください。バックに直結するため、報告漏れは禁止です。' }
+      ]
+    },
+    { id:'mu9', title:'接客姿勢（膝立ち禁止）', important:false, icon:'🧎', preview:'膝立ち禁止。安全と動線確保を優先',
+      sections:[
+        { title:'ルール', body:'膝立ちは禁止です。安全と動線確保を優先してください。' }
+      ]
+    },
+    { id:'mu10', title:'清掃', important:false, icon:'🧹', preview:'床のゴミ・氷は見つけ次第すぐ回収',
+      sections:[
+        { title:'ルール', body:'床のゴミや氷は、見つけ次第すぐに回収してください。' }
+      ]
+    },
+    { id:'mu11', title:'個人情報の開示禁止', important:true, icon:'🔒', preview:'本名・年齢などの個人情報の開示は禁止',
+      sections:[
+        { title:'ルール', body:'本名、年齢などの個人情報の開示は禁止です。' }
+      ]
+    },
+    { id:'mu12', title:'差し入れの管理', important:false, icon:'🎁', preview:'不要・所有者不明の差し入れは処分対象',
+      sections:[
+        { title:'ルール', body:'不要な差し入れは処分してください。所有者不明の差し入れも処分対象です。' }
+      ]
+    },
+    { id:'mu13', title:'衣装破損の報告', important:false, icon:'👗', preview:'衣装が破損したらすぐに報告。放置禁止',
+      sections:[
+        { title:'ルール', body:'衣装が破損した場合は、すぐに報告してください。破損を放置することは禁止です。' }
+      ]
+    },
+  ],
+  champagne: [
+    { id:'ch1', title:'シャンパンノートの記入者', important:true, icon:'📓', preview:'記入はキッチンまたは幹部のみ。キャスト本人による記入は禁止',
+      sections:[
+        { title:'記入者ルール', body:'シャンパンノートの記入は、<strong>キッチンまたは幹部のみ</strong>とします。キャスト本人による記入は禁止です。' }
+      ]
+    },
+    { id:'ch2', title:'シャンパン提供前の報告', important:true, icon:'📢', preview:'提供前に必ずキッチンまたは幹部へ報告。報告なしはバックなし',
+      sections:[
+        { title:'報告タイミング', body:'シャンパンを提供する<strong>前に</strong>、必ずキッチンまたは幹部へ報告してください。' },
+        { title:'報告内容', points:['お客様名','シャンパンの種類','入れていただいたキャスト名'] },
+        { title:'⚠️ 注意', warning:'報告がない場合、バックは発生しません。未報告のものはバック対象外です。' }
+      ]
+    },
+    { id:'ch3', title:'ノートの記入内容と杯数基準', important:true, icon:'✍️', preview:'キッチン・幹部が即時記入。1杯＝約100ml、1本＝約7杯',
+      sections:[
+        { title:'記入内容', points:['飲んだキャスト名','杯数'] },
+        { title:'杯数基準', body:'グラス半分、<strong>約100mlを1杯</strong>とします。シャンパン1本は約7杯換算です。' },
+        { title:'⚠️ 注意', warning:'未報告のものはバック対象外です。' }
+      ]
+    },
+  ],
+  attend: [
+    { id:'a1', title:'出勤時間と準備', important:true, icon:'🕐', preview:'接客準備が完了してから出勤打刻',
+      sections:[
+        { title:'基本ルール', body:'出勤打刻は、<strong>接客準備が完了してから</strong>行ってください。準備完了前の打刻は遅刻扱いとなります。' },
+        { title:'準備チェック', points:['制服・衣装の着用完了','メイク・ヘアのチェック','バニー耳の着用確認','ロッカーの施錠確認','スマホのサイレント設定'] },
+        { title:'⚠️ 注意', warning:'欠勤・遅刻の連絡は14時までに行ってください。14時以降の連絡は無断扱いとなります。' }
+      ]
+    },
+    { id:'a2', title:'退勤のルール', important:true, icon:'🌙', preview:'退勤打刻は着替え前に。残留は事前申告・許可が必要',
+      sections:[
+        { title:'退勤打刻', body:'退勤打刻は、<strong>着替える前</strong>に行ってください。' },
+        { title:'退勤後の残留', body:'退勤後に店舗へ残る場合は、必ず<strong>事前申告と許可</strong>が必要です。事後報告は無効です。' }
+      ]
+    },
+    { id:'a3', title:'引き継ぎ', important:false, icon:'🔄', preview:'退勤前に担当卓・状況の引き継ぎを丁寧に',
+      sections:[
+        { title:'引き継ぎ内容', points:['担当プレイヤー様のオーダー状況','シャンパン・ドリンクの残り状況','特別な要望・注意事項','未精算の卓情報'] }
+      ]
+    },
+  ],
+  looks: [
+    { id:'lo1', title:'衛生面の徹底', important:true, icon:'🚿', preview:'出勤前シャワー必須。デオドラント使用必須',
+      sections:[
+        { title:'必須事項', points:['出勤前は必ずシャワーを浴びてください','デオドラント・制汗剤の使用を必須とします','毎日清潔な下着を着用してください','髪・肌・爪を整えてください'] },
+        { title:'香り', body:'香りはほのかにしてください。<strong>強すぎる香りは禁止</strong>です。シーシャの香りを邪魔しない程度に抑えてください。' },
+        { title:'なぜ大切か', body:'においは第一印象に直結します。清潔感の徹底がプレイヤー様の満足度とリピートにつながります。' }
+      ]
+    },
+    { id:'lo2', title:'メイク・見た目', important:true, icon:'💄', preview:'メイク必須。アイシャドウ・アイライン・マスカラ・リップは必須',
+      sections:[
+        { title:'必須メイク', points:['アイシャドウ','アイライン','マスカラ','リップ'] },
+        { title:'スタイル', body:'系統は自由ですが、「作り込む」ことを意識してください。髪型も含めて、店舗の世界観に合わせてください。' },
+        { title:'目的', points:['お店のイメージ統一','居心地の向上','指名・リピートの増加','バック・評価の向上'] }
+      ]
+    },
+    { id:'lo3', title:'服装・衣装', important:true, icon:'👗', preview:'バニー耳必須。クロックス・スニーカー・サンダル禁止',
+      sections:[
+        { title:'必須', body:'<strong>バニー耳は必須</strong>です。未着用は職務放棄扱いとなります。' },
+        { title:'禁止の服装・靴', points:['クロックス・スニーカー・サンダル（イベント時も同様）','下着が見える服装','ぬいぐるみ・カバンを持っての接客','過度な髪色'] },
+        { title:'衣装破損', body:'衣装が破損した場合は、すぐに報告してください。破損を放置することは禁止です。' }
+      ]
+    },
+  ],
+  ng_act: [
+    { id:'ng1', title:'服装・外見のNG', important:true, icon:'👚', preview:'バニー耳未着用・禁止靴・下着見え・過度な髪色はNG',
+      sections:[
+        { title:'禁止事項', points:['バニー耳未着用（職務放棄扱い）','クロックス・スニーカー・サンダル（イベント時も禁止）','下着が見える服装','ぬいぐるみ・カバンを持っての接客','過度な髪色'] }
+      ]
+    },
+    { id:'ng2', title:'接客中の行動NG', important:true, icon:'🙅', preview:'肘をつく・腰掛け接客・床に座る・寝るは禁止',
+      sections:[
+        { title:'禁止行動', points:['肘をつく行為','腰掛けながらの接客','床に座る・寝る行為','ブランケットを着用したままの接客'] }
+      ]
+    },
+    { id:'ng3', title:'お客様への接触NG', important:true, icon:'🚫', preview:'触れる・触らせる・煙を向けるはすべて禁止',
+      sections:[
+        { title:'禁止事項', points:['お客様に触れる行為','お客様に触らせる行為','お客様へ煙を向ける行為'] }
+      ]
+    },
+    { id:'ng4', title:'言葉遣いのNG', important:false, icon:'💬', preview:'タメ口・敬語でない発言はNG',
+      sections:[
+        { title:'NG例', body:'「えー、それはちょっと…」「わかんないです」「ちょっと待って」など、敬語でない発言やぞんざいな対応はNGです。' },
+        { title:'OK例', good:'「少々お待ちくださいませ」「確認してまいりますので少しお時間をいただけますでしょうか」と丁寧に対応してください。' }
+      ]
+    },
+  ],
+  service: [
+    { id:'s1', title:'プレイヤー様へのご挨拶', important:true, icon:'✨', preview:'入店・退店時は笑顔でお出迎え・お見送り',
+      sections:[
+        { title:'基本姿勢', body:'プレイヤー様がご入店される際は、笑顔でしっかりお出迎えします。退店時も「またのご来店をお待ちしております」とお見送りします。' },
+        { title:'接客の基本', points:['常に笑顔で対応','プレイヤー様の名前で呼ぶ','アイコンタクトを忘れずに','席を外す際は一言断りを','呼ばれたらすぐに応答'] }
+      ]
+    },
+    { id:'s2', title:'オーダーの取り方', important:false, icon:'📋', preview:'メモを取り、復唱確認を忘れずに',
+      sections:[
+        { title:'オーダーの基本', body:'必ずメモを持参してオーダーを受けてください。お聞きしたオーダーは必ず復唱して確認します。' },
+        { title:'確認事項', points:['ドリンクのオーダー（アルコール有無）','シーシャのフレーバーと強さ','アレルギーの確認'] }
+      ]
+    },
+    { id:'s3', title:'外国のお客様対応', important:true, icon:'🌏', preview:'翻訳アプリ等で必ずスタート時間・延長・シェアチャージを説明',
+      sections:[
+        { title:'必ず説明する内容', body:'日本語が伝わりにくい場合でも、翻訳アプリなどを使用して必ず以下を説明してください。', points:['スタート時間','自動延長','シェアチャージ'] },
+        { title:'なぜ必須か', body:'こちらはトラブル防止のため<strong>必須</strong>です。説明なしのトラブルはキャストの責任となります。' },
+        { title:'伝わりにくい場合の対応', body:'翻訳でも伝わりにくい場合は、英語対応ができるキャストや手が空いているキッチンに必ず引き継ぎをお願いします。' }
+      ]
+    },
+  ],
+  contact: [
+    { id:'c1', title:'連絡先・SNS交換の禁止', important:true, icon:'🚫', preview:'プレイヤー様との個人的な連絡は絶対禁止',
+      sections:[
+        { title:'絶対禁止事項', body:'プレイヤー様との個人的な連絡先（LINE、電話番号、インスタ等）の交換は、いかなる理由があっても<strong>絶対禁止</strong>です。' },
+        { title:'⚠️ 重大注意', warning:'SNS交換や個人的な連絡が発覚した場合、即座に厳重な処分の対象となります。プレイヤー様から強く求められた場合は「店のルールで禁止されております」とお断りください。' }
+      ]
+    },
+    { id:'c2', title:'プライベートでの接触禁止', important:true, icon:'⛔', preview:'勤務外でのプレイヤー様との接触は禁止',
+      sections:[
+        { title:'ルール', body:'勤務時間外でのプレイヤー様との接触（デート、食事、待ち合わせ等）は禁止です。偶然お会いした場合は礼儀正しくご挨拶のみとしてください。' },
+        { title:'お断りの仕方', good:'「天界のルールで、お店の外でのご連絡・お会いすることは禁止されております。ぜひ天界でまたお会いしましょう！」と笑顔でお断りください。' }
+      ]
+    },
+    { id:'c3', title:'個人情報の開示禁止', important:true, icon:'🔒', preview:'本名・年齢などの個人情報の開示は禁止',
+      sections:[
+        { title:'ルール', body:'本名、年齢などの個人情報の開示は禁止です。' }
+      ]
+    },
+  ],
+  shisha: [
+    { id:'sh1', title:'シーシャ注文時の確認', important:true, icon:'🌿', preview:'フレーバー・強さ・アレルギーを必ず確認',
+      sections:[
+        { title:'確認項目', points:['フレーバーの希望（甘め・スッキリ・フルーティなど）','煙の量（多め・少なめ）','ニコチンあり/なし','アレルギー・禁忌事項','初めてのお客様かどうか'] },
+        { title:'初めてのプレイヤー様へ', body:'シーシャが初めてのプレイヤー様には、吸い方・注意事項（水分補給、立ちくらみ等）を丁寧にご説明してください。「ご気分が悪くなったらすぐにお申し付けください」の一言も忘れずに。' }
+      ]
+    },
+    { id:'sh2', title:'炭の交換タイミング', important:false, icon:'⏱️', preview:'炭交換は30分ごとが目安',
+      sections:[
+        { title:'交換の目安', body:'炭の交換はおよそ<strong>30分を目安</strong>に行ってください。煙が少なくなったと感じたら早めに確認・交換を。' },
+        { title:'交換時の対応', points:['「炭の交換をしてもよろしいでしょうか」と声がけ','フレーバーの追加・変更希望を伺う','灰の処理は清潔に'] }
+      ]
+    },
+    { id:'sh3', title:'お客様への煙NG', important:true, icon:'🚫', preview:'お客様へ煙を向ける行為は禁止',
+      sections:[
+        { title:'禁止', body:'お客様へ煙を向ける行為は<strong>禁止</strong>です。煙の向きに注意して接客してください。' }
+      ]
+    },
+    { id:'sh4', title:'ポケパラクーポン', important:true, icon:'🎟️', preview:'ポケパラ来店客限定クーポン。内容と条件を必ず確認',
+      sections:[
+        { title:'クーポン概要', body:'ポケパラを見てご来店されたお客様には、ポケパラ限定クーポンがあります。フード1品無料・シーシャ1台無料・ショットサービスの3種類です。' },
+        { title:'フード1品無料', body:'<strong>通常フードのみ対象</strong>です。限定フード・イベントフードは対象外ですのでご注意ください。' },
+        { title:'シーシャ1台無料', body:'<strong>口コミを書く初来店の新規様のみ</strong>使用可能です。必ず口コミ画面の確認をお願いします。' },
+        { title:'⚠️ シーシャ入力時の注意', warning:'シーシャをハンディーで入力する前に、必ず単価変更を行い「0円」で入力してください。' },
+        { title:'ショットサービス', body:'<strong>口コミを書く初来店の新規様のみ</strong>使用可能です。必ず口コミ画面の確認をお願いします。1杯のみです。', points:['テキーラ','イエガー','クライナー'] },
+      ]
+    },
+    { id:'sh5', title:'外国のお客様対応', important:true, icon:'🌏', preview:'翻訳アプリ等で必ずスタート時間・延長・シェアチャージを説明',
+      sections:[
+        { title:'必ず説明する内容', body:'日本語が伝わりにくい場合でも、翻訳アプリなどを使用して必ず以下を説明してください。', points:['スタート時間','自動延長','シェアチャージ'] },
+        { title:'なぜ必要か', body:'こちらはトラブル防止のため<strong>必須</strong>です。' },
+        { title:'伝わりにくい場合', body:'翻訳でも伝わりにくい場合は、英語対応ができるキャストや手が空いているキッチンに必ず引き継ぎをお願いします。' }
+      ]
+    },
+  ],
+  cashier: [
+    { id:'ca1', title:'会計の基本', important:true, icon:'💰', preview:'会計はダブルチェックで。ミスは即報告',
+      sections:[
+        { title:'基本ルール', body:'会計は必ずダブルチェックを行ってください。少しでも不安な場合は必ず先輩キャスト・妖精に確認してから対応してください。' },
+        { title:'会計の手順', points:['オーダーシートと伝票の照合','合計金額の再確認','お支払い方法の確認','お釣りは声に出して確認','領収書の有無を確認'] },
+        { title:'⚠️ 注意', warning:'会計でのトラブルは隠さず必ず即座に妖精へ報告してください。隠蔽は厳禁です。' }
+      ]
+    },
+    { id:'ca2', title:'会計後のお見送り', important:true, icon:'🚪', preview:'会計後は速やかにお見送り。未精算での会話継続は禁止',
+      sections:[
+        { title:'ルール', points:['会計後は速やかにお見送りをしてください','会計後に会話を継続する場合は延長対象です','未精算のまま会話を継続することは禁止です','過度なお見送りは禁止です'] }
+      ]
+    },
+    { id:'ca3', title:'ポケパラクーポン', important:true, icon:'🎟️', preview:'ポケパラ来店客限定クーポン。条件と入力方法を必ず確認',
+      sections:[
+        { title:'クーポン概要', body:'ポケパラを見てご来店されたお客様には、ポケパラ限定クーポンがあります。フード1品無料・シーシャ1台無料・ショットサービスの3種類です。' },
+        { title:'フード1品無料', body:'<strong>通常フードのみ対象</strong>です。限定フード・イベントフードは対象外ですのでご注意ください。' },
+        { title:'シーシャ1台無料', body:'<strong>口コミを書く初来店の新規様のみ</strong>使用可能です。必ず口コミ画面の確認をお願いします。' },
+        { title:'⚠️ シーシャ入力時の注意', warning:'シーシャをハンディーで入力する前に、必ず単価変更を行い「0円」で入力してください。' },
+        { title:'ショットサービス', body:'<strong>口コミを書く初来店の新規様のみ</strong>使用可能です。必ず口コミ画面の確認をお願いします。1杯のみです。', points:['テキーラ','イエガー','クライナー'] },
+      ]
+    },
+  ],
+  walk: [
+    { id:'wa1', title:'お散歩の可能範囲', important:true, icon:'🚶', preview:'お散歩はビル下のみ許可。その他の場所は一切禁止',
+      sections:[
+        { title:'ルール', body:'お散歩は<strong>ビル下のみ許可</strong>します。その他の場所でのお散歩は一切禁止です。' },
+        { title:'⚠️ なぜ厳守するのか', warning:'営業停止や法的リスクにつながるため、必ず厳守してください。' }
+      ]
+    },
+  ],
+  input: [
+    { id:'in1', title:'入力ミス防止ルール', important:true, icon:'📋', preview:'入力前に卓番号を必ず確認。不明ならキッチンへ',
+      sections:[
+        { title:'なぜ重要か', body:'卓間違い、入力漏れ、誤入力が増えています。入力ミスは、<strong>売上・信頼・バックすべてに影響</strong>します。' },
+        { title:'ルール', points:['入力前に必ず卓番号を確認してください','不明な場合は自己判断せず、キッチンへ確認してください'] }
+      ]
+    },
+  ],
+  double: [
+    { id:'db1', title:'ダブルドリンクのルール', important:true, icon:'🥂', preview:'ダブルドリンクは必ず事前にお客様の許可を取る',
+      sections:[
+        { title:'ルール', body:'ダブルドリンクは、必ず<strong>事前にお客様の許可</strong>を取ってください。' },
+        { title:'⚠️ 注意', warning:'「ドリンクOK」は「ダブルドリンクOK」ではありません。必ず個別に確認してください。' }
+      ]
+    },
+  ],
+  supply: [
+    { id:'su1', title:'マッキーの管理', important:true, icon:'🖊️', preview:'本数固定。キッチンからの持ち出し厳禁',
+      sections:[
+        { title:'本数（固定）', points:['K館：4本','J館：5本','チェキ用：2本'] },
+        { title:'禁止事項', points:['持ち出しは禁止','キッチンからの持ち出しは厳禁','使用後は必ず元の場所に戻すこと'] }
+      ]
+    },
+    { id:'su2', title:'備品の配置管理', important:false, icon:'📦', preview:'物品の配置を把握。私物には必ず記名',
+      sections:[
+        { title:'ルール', points:['物品の配置を把握してください','私物には必ず記名してください','所有者不明の物品は処分対象となります'] }
+      ]
+    },
+  ],
+  sns: [
+    { id:'sn1', title:'SNS投稿のルール', important:true, icon:'📱', preview:'店内情報・プレイヤー様の写真は無断投稿禁止',
+      sections:[
+        { title:'禁止事項', body:'天界の内部情報や、プレイヤー様の顔・情報の無断投稿は<strong>厳禁</strong>です。' },
+        { title:'投稿してよいもの', points:['天界から公式に許可されたコンテンツ','自分自身の衣装・メイクのみ（内装が映り込まない範囲で）','公式アカウントのシェア・拡散'] },
+        { title:'⚠️ 重要', warning:'店内での撮影は必ず妖精に確認を取ってください。' }
+      ]
+    },
+    { id:'sn2', title:'勤務中のスマホ使用', important:true, icon:'🚫', preview:'勤務中の私的なスマホ操作は禁止',
+      sections:[
+        { title:'ルール', body:'勤務時間中の私的なスマホ操作（SNS閲覧、通話、メッセージ送受信等）は原則<strong>禁止</strong>です。緊急の連絡がある場合はスタッフルームで対応してください。' },
+        { title:'許可される場合', points:['業務上必要な確認（シーシャメニュー等）','緊急の連絡（必ずスタッフルームで）','妖精からの業務連絡の確認'] }
+      ]
+    },
+  ],
+  trouble: [
+    { id:'tr1', title:'クレーム対応の基本', important:true, icon:'🆘', preview:'まず謝罪・共感。判断は必ず妖精へ',
+      sections:[
+        { title:'対応の基本姿勢', body:'プレイヤー様からクレームをいただいた場合は、まず<strong>お気持ちに共感しお詫び</strong>をしてください。必ず「ただいま責任者を呼んでまいります」と妖精に引き継いでください。' },
+        { title:'対応手順', points:['まず落ち着いて聞く','「申し訳ございません」と丁寧にお詫び','内容をメモする','「責任者をお呼びします」と伝える','妖精に状況を詳しく引き継ぐ'] },
+        { title:'⚠️ 絶対NG', warning:'クレームに対してキャスト個人で判断・約束することは禁止です。「無料にします」などの発言は絶対にしないでください。' }
+      ]
+    },
+    { id:'tr2', title:'体調不良のプレイヤー様への対応', important:true, icon:'🏥', preview:'体調不良は即妖精へ。一人で抱え込まない',
+      sections:[
+        { title:'対応手順', body:'プレイヤー様の体調不良を発見した場合は、<strong>すぐに妖精へ報告</strong>してください。' },
+        { title:'初期対応', points:['「大丈夫でしょうか」と声がけ','水の提供','妖精へ即座に報告','シーシャが原因の場合は換気も'] }
+      ]
+    },
+    { id:'tr3', title:'泥酔・迷惑行為への対応', important:true, icon:'⚠️', preview:'泥酔・迷惑行為への対応は必ず妖精へ',
+      sections:[
+        { title:'対応方針', body:'泥酔状態や迷惑行為のプレイヤー様への対応は、キャスト単独では行わないでください。すぐに妖精へ報告・引き継ぎを行ってください。' },
+        { title:'⚠️ ハラスメント', warning:'暴言・セクハラ・身体的接触などハラスメント行為に対しては、毅然とした態度で「それはお断りいたします」とお伝えし、すぐに妖精へ報告してください。一人で我慢する必要はありません。' }
+      ]
+    },
+  ],
+};
+
+const CHECKLIST_DATA = {
+  groups: [
+    {
+      title: '入店初日までに',
+      items: [
+        { id:'cl1', text:'制服・衣装の受け取りと着用確認' },
+        { id:'cl2', text:'バニー耳の着用方法を確認' },
+        { id:'cl3', text:'ロッカーの割り当てと鍵の受け取り' },
+        { id:'cl4', text:'緊急連絡先（妖精）の確認' },
+        { id:'cl5', text:'出退勤打刻のタイミングを確認' },
+        { id:'cl6', text:'お店の基本ルールブックの読了' },
+      ]
+    },
+    {
+      title: '1週間以内に',
+      items: [
+        { id:'cl7',  text:'シーシャ全フレーバーの確認・試飲' },
+        { id:'cl8',  text:'メニュー内容の把握（ドリンク・フード）' },
+        { id:'cl9',  text:'レジ・会計操作の練習' },
+        { id:'cl10', text:'卓番号と卓立てのルール確認' },
+        { id:'cl11', text:'シャンパンノート記入ルールの確認' },
+        { id:'cl12', text:'お散歩ルールの確認（ビル下のみ）' },
+        { id:'cl13', text:'マッキーの場所と本数の確認' },
+      ]
+    },
+    {
+      title: '1ヶ月以内に',
+      items: [
+        { id:'cl14', text:'シーシャのフレーバー提案ができるようになる' },
+        { id:'cl15', text:'一人でテーブルの担当ができる' },
+        { id:'cl16', text:'確認テスト（アプリ内）で80点以上' },
+        { id:'cl17', text:'ルールブック全ページ読了' },
+        { id:'cl18', text:'ダブルドリンクの確認フローを習得' },
+      ]
+    }
+  ]
+};
+
+const NG_DATA = [
+  { title:'プレイヤー様への言葉遣い', icon:'💬',
+    bad:'「えー、それはちょっと…」「わかんないです」「ちょっと待って」など、敬語でない発言やぞんざいな対応',
+    good:'「少々お待ちくださいませ」「確認してまいりますので少しお時間をいただけますでしょうか」と丁寧に'
+  },
+  { title:'スマホを見ながらの接客', icon:'📵',
+    bad:'プレイヤー様が話しかけているのにスマホを見ている、オーダーをスマホに打ちながら顔を見ない',
+    good:'スマホは接客中は使用しない。必要な場合は断りを入れてから確認する'
+  },
+  { title:'ダブルドリンクを無断で提供', icon:'🥂',
+    bad:'「ドリンクOK」と言われたからと、確認なしにダブルドリンクを提供する',
+    good:'「ダブルドリンクはよろしいですか？」と必ず事前に個別確認する'
+  },
+  { title:'シャンパン提供を無断で行う', icon:'🍾',
+    bad:'キッチンや幹部への報告なしにシャンパンを提供する',
+    good:'提供前に必ずキッチンまたは幹部へお客様名・種類・キャスト名を報告する'
+  },
+  { title:'お客様との接触', icon:'🚫',
+    bad:'お客様に触れる、触らせる、煙を向けるなどの接触行為',
+    good:'接触は禁止。距離感を保ち、プレイヤー様が安心できる空間を維持する'
+  },
+  { title:'卓番号の自己判断入力', icon:'🪑',
+    bad:'卓番号がわからないまま自己判断で入力する',
+    good:'不明な場合はキッチンへ確認してから入力する。入力ミスは売上・バックに影響する'
+  },
+];
+
+const QA_DATA = [
+  { q:'プレイヤー様が急に体調を崩されました。どうすればいいですか？',
+    a:'まず「大丈夫でしょうか」とお声がけし、水をご用意ください。すぐに妖精へ報告し、指示を仰いでください。シーシャが原因の場合は換気も。キャスト単独での判断は避け、必ず妖精と連携してください。'
+  },
+  { q:'会計金額に間違いがあったと指摘されました。',
+    a:'「大変申し訳ございません」とすぐにお詫びし、その場を一時離れ妖精を呼んでください。金額の訂正・返金はキャスト単独では行わず、必ず妖精の指示に従ってください。'
+  },
+  { q:'プレイヤー様に「連絡先を教えて」と言われました。',
+    a:'笑顔で「天界のルールにより、プレイヤー様との個人的な連絡先の交換は禁止されております。ぜひ天界でまたお会いしましょう！」とお断りください。強引に求められる場合は妖精へ相談してください。'
+  },
+  { q:'シャンパンを提供する前に何を報告すればいいですか？',
+    a:'提供前に必ずキッチンまたは幹部へ「①お客様名、②シャンパンの種類、③入れていただいたキャスト名」を報告してください。報告がない場合はバックが発生しません。'
+  },
+  { q:'卓番号がわからない場合はどうすればいいですか？',
+    a:'自己判断で入力せず、必ずキッチンへ確認してください。卓間違いは売上・信頼・バックすべてに影響します。'
+  },
+  { q:'プレイヤー様が酔いすぎているように見えます。',
+    a:'追加のアルコール提供は一旦保留し、「責任者に確認させていただきます」と伝えて妖精へ報告してください。水やソフトドリンクをさりげなくご提案するのも有効です。'
+  },
+];
+
+const QUIZ_DATA = [
+  { q:'シャンパンノートを記入できるのは誰ですか？',
+    opts:['キャスト本人','キッチンまたは幹部のみ','お客様','どのキャストでも可'],
+    ans:1,
+    exp:'シャンパンノートの記入はキッチンまたは幹部のみです。キャスト本人による記入は禁止です。'
+  },
+  { q:'シャンパン提供前に報告する内容として正しいものはどれですか？',
+    opts:['シャンパンの金額のみ','お客様名・シャンパンの種類・入れたキャスト名','テーブル番号のみ','報告不要'],
+    ans:1,
+    exp:'提供前にキッチンまたは幹部へ「①お客様名、②シャンパンの種類、③入れていただいたキャスト名」を報告してください。報告がない場合はバックが発生しません。'
+  },
+  { q:'出勤打刻はいつ行いますか？',
+    opts:['更衣室に着いたとき','接客準備が完了してから','シフト開始時刻ちょうどに','出勤前'],
+    ans:1,
+    exp:'出勤打刻は接客準備が完了してから行ってください。準備完了前の打刻は遅刻扱いとなります。'
+  },
+  { q:'退勤打刻はいつ行いますか？',
+    opts:['着替えが終わってから','帰宅前','着替える前','シフト終了の5分後'],
+    ans:2,
+    exp:'退勤打刻は着替える前に行ってください。退勤後に店舗へ残る場合は事前申告と許可が必要です。'
+  },
+  { q:'クーポン提供時の注意点として正しいものはどれですか？',
+    opts:['使用済みクーポンも再利用できる','テキーラはどの種類でも使用可','内容は毎回確認し、その通りに提供する','タワークーポンでクライナー6本を提供できる'],
+    ans:2,
+    exp:'クーポン内容は日によって異なるため、必ず確認してその通りに提供してください。使用済み再利用・テキーラの種類混合・クライナーへの変更はすべて禁止です。'
+  },
+  { q:'卓番号が不明な場合の正しい対応は？',
+    opts:['自己判断で近そうな番号を入力する','入力せずに放置する','キッチンへ確認してから入力する','お客様に直接聞く'],
+    ans:2,
+    exp:'卓番号が不明な場合は自己判断せず、キッチンへ確認してから入力してください。入力ミスは売上・信頼・バックすべてに影響します。'
+  },
+  { q:'お客様との接触ルールとして正しいものはどれですか？',
+    opts:['お客様が望めば触れてよい','触れる・触らせる・煙を向けるはすべて禁止','軽いスキンシップはOK','お散歩中の接触はOK'],
+    ans:1,
+    exp:'お客様に触れる行為、お客様に触らせる行為、お客様へ煙を向ける行為はすべて禁止です。'
+  },
+  { q:'お散歩が許可されている場所はどこですか？',
+    opts:['近くのコンビニまで','ビル周辺の路上','ビル下のみ','どこでも自由'],
+    ans:2,
+    exp:'お散歩はビル下のみ許可です。その他の場所でのお散歩は一切禁止です。営業停止や法的リスクにつながるため必ず厳守してください。'
+  },
+  { q:'ダブルドリンクを提供するときの正しい確認方法は？',
+    opts:['「ドリンクOK」なら確認不要','毎回「ダブルドリンクはよろしいですか？」と事前確認','妖精に確認してもらう','お客様が頼んだらすぐ提供'],
+    ans:1,
+    exp:'「ドリンクOK」は「ダブルドリンクOK」ではありません。必ず事前にお客様の許可を個別に取ってください。'
+  },
+  { q:'マッキーの持ち出しルールとして正しいものは？',
+    opts:['業務目的なら持ち出しOK','キッチンからの持ち出しは厳禁','本数は自由','使用後はどこに置いてもよい'],
+    ans:1,
+    exp:'マッキーの持ち出しは禁止です。特にキッチンからの持ち出しは厳禁。使用後は必ず元の場所に戻してください（K館4本・J館5本・チェキ用2本で固定）。'
+  },
+];
+
+
+
+// ===== STATE =====
+let readRules = JSON.parse(localStorage.getItem('bunnys_read') || '{}');
+let checklistState = JSON.parse(localStorage.getItem('bunnys_checklist') || '{}');
+let currentPage = 'home';
+let pageHistory = [];
+let quizState = { started:false, current:0, score:0, answered:false };
+
+// ===== ADMIN STATE =====
+let isAdminMode = false;
+let adminHoldTimer = null;
+const DEFAULT_ADMIN_PW = 'admin1234';
+
+function getAdminPW() {
+  return localStorage.getItem('bunnys_admin_pw') || DEFAULT_ADMIN_PW;
+}
+
+// ===== CUSTOM DATA (persisted overrides) =====
+// Stored as bunnys_custom_rules / bunnys_custom_ng / bunnys_custom_qa / bunnys_custom_checklist / bunnys_custom_notices
+let customRules    = JSON.parse(localStorage.getItem('bunnys_custom_rules')    || 'null');
+let customNG       = JSON.parse(localStorage.getItem('bunnys_custom_ng')       || 'null');
+let customQA       = JSON.parse(localStorage.getItem('bunnys_custom_qa')       || 'null');
+let customChecklist= JSON.parse(localStorage.getItem('bunnys_custom_checklist')|| 'null');
+let customNotices  = JSON.parse(localStorage.getItem('bunnys_custom_notices')  || 'null');
+
+// Apply custom data on top of defaults
+if (customRules)    Object.assign(RULES, customRules);
+if (customNG)       NG_DATA.splice(0, NG_DATA.length, ...customNG);
+if (customQA)       QA_DATA.splice(0, QA_DATA.length, ...customQA);
+if (customChecklist) CHECKLIST_DATA.groups = customChecklist;
+
+const DEFAULT_NOTICES = [
+  'シャンパンノートの記入は<strong>キッチンまたは幹部のみ</strong>。キャスト本人の記入は禁止',
+  'シャンパン提供前に必ず<strong>お客様名・種類・キャスト名を報告</strong>。報告なしはバックなし',
+  '出勤打刻は<strong>接客準備完了後</strong>、退勤打刻は<strong>着替える前</strong>に',
+  '欠勤・遅刻の連絡は<strong>14時まで</strong>。以降は無断扱い',
+  'お散歩は<strong>ビル下のみ</strong>許可。他の場所は一切禁止',
+  'ダブルドリンクは<strong>必ず事前にお客様の許可</strong>を取ること',
+  'マッキーの<strong>持ち出し禁止</strong>。使用後は元の場所へ'
+];
+let noticeItems = customNotices || [...DEFAULT_NOTICES];
+
+function renderNotices() {
+  const card = document.getElementById('noticeCardEl') || document.querySelector('.notice-card');
+  if (!card) return;
+  const titleHtml = '<div class="notice-title">⚠️ 最重要ルール（常時掲示）</div>';
+  card.innerHTML = titleHtml + noticeItems.map(t =>
+    `<div class="notice-item">${t}</div>`
+  ).join('');
+}
+
+// ===== TOTAL RULES COUNT =====
+const TOTAL_RULES = Object.values(RULES).flat().length;
+
+// ===== INIT =====
+function init() {
+  renderNotices();
+  buildCategoryGrid();
+  buildChecklist();
+  buildNG();
+  buildQA();
+  buildQuiz();
+  updateProgress();
+}
+
+function updateProgress() {
+  const count = Object.values(readRules).filter(Boolean).length;
+  const pct = Math.round(count / TOTAL_RULES * 100);
+  document.getElementById('progressText').textContent = `${count} / ${TOTAL_RULES} ルール`;
+  document.getElementById('progressFill').style.width = pct + '%';
+  buildCategoryGrid();
+}
+
+// ===== CATEGORY GRID =====
+function buildCategoryGrid() {
+  const grid = document.getElementById('categoryGrid');
+  grid.innerHTML = CATEGORIES.map(cat => {
+    const rules = RULES[cat.id] || [];
+    const readCount = rules.filter(r => readRules[r.id]).length;
+    const allRead = rules.length > 0 && readCount === rules.length;
+    return `
+      <div class="category-card" onclick="showCatList('${cat.id}')" style="background:${cat.color}">
+        ${allRead ? '<div class="cat-read-badge">✓</div>' : ''}
+        <span class="cat-icon">${cat.icon}</span>
+        <div class="cat-name">${cat.name.replace('\n','<br>')}</div>
+        <div class="cat-count">${readCount}/${rules.length} 読了</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ===== PAGE NAVIGATION =====
+function showPage(pageId, pushHistory=true) {
+  if (pushHistory && currentPage !== pageId) pageHistory.push(currentPage);
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  currentPage = pageId;
+
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + pageId);
+  if (navEl) navEl.classList.add('active');
+
+  const backBtn = document.getElementById('backBtn');
+  if (['catlist','detail','admin'].includes(pageId)) {
+    backBtn.classList.add('visible');
+  } else {
+    backBtn.classList.remove('visible');
+    pageHistory = [];
+  }
+
+  if (pageId === 'admin') buildAdminPanel();
+  window.scrollTo(0, 0);
+}
+
+function goBack() {
+  if (pageHistory.length > 0) {
+    const prev = pageHistory.pop();
+    showPage(prev, false);
+  } else {
+    showPage('home', false);
+  }
+}
+
+// ===== CATEGORY LIST =====
+function showCatList(catId) {
+  const cat = CATEGORIES.find(c => c.id === catId);
+  const rules = RULES[catId] || [];
+  document.getElementById('catListCatName').textContent = cat.icon + ' ' + cat.name.replace('\n',' ');
+  document.getElementById('catListTitle').textContent = cat.name.replace('\n',' ');
+
+  document.getElementById('ruleListContainer').innerHTML = rules.map(rule => `
+    <div class="rule-item ${rule.important?'important':''}" onclick="showRuleDetail('${catId}','${rule.id}')">
+      <div class="rule-icon-wrap">${rule.icon}</div>
+      <div class="rule-content">
+        <div class="rule-title">
+          ${rule.title}
+          ${rule.important ? '<span class="badge-important">重要</span>' : ''}
+        </div>
+        <div class="rule-preview">${rule.preview}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
+        <div class="rule-read-check ${readRules[rule.id] ? 'checked' : ''}">${readRules[rule.id] ? '✓' : ''}</div>
+        <button class="edit-rule-btn" onclick="event.stopPropagation();openEditRule('${catId}','${rule.id}')">✏️ 編集</button>
+      </div>
+    </div>
+  `).join('');
+
+  showPage('catlist');
+}
+
+// ===== RULE DETAIL =====
+function showRuleDetail(catId, ruleId) {
+  const cat = CATEGORIES.find(c => c.id === catId);
+  const rule = Object.values(RULES).flat().find(r => r.id === ruleId);
+
+  let html = `
+    <div class="rule-detail-header">
+      <span class="rule-detail-icon">${rule.icon}</span>
+      <div class="rule-detail-title">${rule.title}</div>
+      <div class="rule-detail-cat">${cat.icon} ${cat.name.replace('\n',' ')}</div>
+    </div>
+  `;
+
+  rule.sections.forEach(sec => {
+    html += `<div class="rule-section">`;
+    html += `<div class="rule-section-title">${sec.title}</div>`;
+    if (sec.body) {
+      html += `<div class="rule-body"><p>${sec.body}</p></div>`;
+    }
+    if (sec.points) {
+      sec.points.forEach(p => {
+        html += `<div class="rule-point"><div class="rule-point-dot">✦</div><div>${p}</div></div>`;
+      });
+    }
+    if (sec.warning) {
+      html += `<div class="warning-box"><div class="warning-box-title">⚠️ 注意</div><div class="warning-box-body">${sec.warning}</div></div>`;
+    }
+    if (sec.good) {
+      html += `<div class="good-box"><div class="good-box-title">✅ 良い例</div><div class="rule-body">${sec.good}</div></div>`;
+    }
+    html += `</div>`;
+  });
+
+  const isRead = readRules[rule.id];
+  html += `<button class="read-complete-btn ${isRead?'done':''}" id="readBtn" onclick="toggleRead('${ruleId}')">
+    ${isRead ? '✓ 読了済み' : '読了チェックをする'}
+  </button>`;
+
+  if (isAdminMode) {
+    html += `<button class="edit-rule-btn" style="display:flex;margin-top:10px;width:100%;justify-content:center;padding:10px;" onclick="openEditRule('${catId}','${rule.id}')">✏️ このルールを編集する</button>`;
+  }
+
+  document.getElementById('ruleDetailContainer').innerHTML = html;
+  showPage('detail');
+}
+
+function toggleRead(ruleId) {
+  readRules[ruleId] = !readRules[ruleId];
+  localStorage.setItem('bunnys_read', JSON.stringify(readRules));
+  const btn = document.getElementById('readBtn');
+  btn.className = 'read-complete-btn ' + (readRules[ruleId] ? 'done' : '');
+  btn.textContent = readRules[ruleId] ? '✓ 読了済み' : '読了チェックをする';
+  showToast(readRules[ruleId] ? '✦ 読了記録しました' : '読了を取り消しました');
+  updateProgress();
+}
+
+// ===== SEARCH =====
+function doSearch(q) {
+  const res = document.getElementById('searchResults');
+  if (!q || q.length < 1) {
+    res.innerHTML = '<div style="text-align:center; padding:30px 0; color:rgba(61,26,26,0.4); font-size:13px;">キーワードを入力してください<br><span style="font-size:11px;">例：「遅刻」「シーシャ」「会計」</span></div>';
+    return;
+  }
+  let results = [];
+  CATEGORIES.forEach(cat => {
+    (RULES[cat.id] || []).forEach(rule => {
+      const allText = rule.title + rule.preview + (rule.sections||[]).map(s=>(s.body||'')+(s.points||[]).join('')).join('');
+      if (allText.includes(q)) results.push({ cat, rule });
+    });
+  });
+
+  if (results.length === 0) {
+    res.innerHTML = `<div style="text-align:center; padding:30px 0; color:rgba(61,26,26,0.4); font-size:13px;">「${q}」に一致するルールは見つかりませんでした</div>`;
+    return;
+  }
+
+  res.innerHTML = results.map(({cat, rule}) => {
+    const preview = rule.preview.replace(new RegExp(q,'g'), `<span class="highlight">${q}</span>`);
+    return `<div class="search-result-item" onclick="showRuleDetail('${cat.id}','${rule.id}')">
+      <div class="sri-cat">${cat.icon} ${cat.name.replace('\n',' ')}</div>
+      <div class="sri-title">${rule.title.replace(new RegExp(q,'g'), `<span class="highlight">${q}</span>`)}</div>
+      <div class="sri-preview">${preview}</div>
+    </div>`;
+  }).join('');
+}
+
+// ===== CHECKLIST =====
+function buildChecklist() {
+  const cont = document.getElementById('checklistContainer');
+  const totalItems = CHECKLIST_DATA.groups.reduce((a,g) => a+g.items.length, 0);
+  const doneItems = Object.values(checklistState).filter(Boolean).length;
+
+  let html = `
+    <div class="checklist-progress">
+      <div class="big-num">${doneItems}<span style="font-size:18px; color:var(--dusty-rose)">/${totalItems}</span></div>
+      <div class="prog-label">✦ 完了タスク</div>
+      <div class="progress-bar-track" style="margin-top:8px;">
+        <div class="progress-bar-fill" style="width:${Math.round(doneItems/totalItems*100)}%"></div>
+      </div>
+    </div>
+    <div class="checklist-intro">
+      ✦ Bunny's Guildへようこそ！こちらは新人キャスト向けのスタートアップチェックリストです。各タスクが完了したらタップして記録してください。
+    </div>
+  `;
+
+  CHECKLIST_DATA.groups.forEach((group, gi) => {
+    html += `<div class="checklist-group">
+      <div class="checklist-group-title">${group.title}
+        ${isAdminMode ? `<button class="admin-edit-btn-sm" style="margin-left:auto;" onclick="openEditChecklistGroup(${gi})">✏️ グループ編集</button>` : ''}
+      </div>`;
+    group.items.forEach(item => {
+      const done = checklistState[item.id];
+      html += `
+        <div class="check-item ${done?'checked-item':''}" onclick="toggleCheck('${item.id}')">
+          <div class="check-box ${done?'checked':''}">${done?'✓':''}</div>
+          <div class="check-text">${item.text}</div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+  });
+
+  cont.innerHTML = html;
+}
+
+function toggleCheck(itemId) {
+  checklistState[itemId] = !checklistState[itemId];
+  localStorage.setItem('bunnys_checklist', JSON.stringify(checklistState));
+  buildChecklist();
+  showToast(checklistState[itemId] ? '✦ チェック完了！' : 'チェックを外しました');
+}
+
+// ===== NG =====
+function buildNG() {
+  const cont = document.getElementById('ngContainer');
+  cont.innerHTML = `
+    <div class="ng-intro">
+      🚫 天界のキャストとして避けるべきNG行動をまとめました。<br>タップして詳細とOK例をご確認ください。
+    </div>
+    ${NG_DATA.map((item, i) => `
+      <div class="ng-item" id="ng-${i}">
+        <div class="ng-header" onclick="toggleNG(${i})">
+          <div class="ng-icon">🚫</div>
+          <div class="ng-title">${item.title}</div>
+          ${isAdminMode ? `<button class="admin-edit-btn-sm" style="margin-right:8px;" onclick="event.stopPropagation();openEditNG(${i})">✏️</button>` : ''}
+          <div class="ng-chevron">▼</div>
+        </div>
+        <div class="ng-body">
+          <div class="ng-bad">
+            <div class="ng-label bad">❌ NG例</div>
+            ${item.bad}
+          </div>
+          <div class="ng-good">
+            <div class="ng-label good">✅ OK例</div>
+            ${item.good}
+          </div>
+        </div>
+      </div>
+    `).join('')}
+    ${isAdminMode ? `<button class="edit-save-btn" style="margin-top:8px;" onclick="openAddNG()">＋ NG項目を追加</button>` : ''}
+  `;
+}
+
+function toggleNG(i) {
+  document.getElementById('ng-'+i).classList.toggle('open');
+}
+
+// ===== Q&A =====
+function buildQA() {
+  const cont = document.getElementById('qaContainer');
+  cont.innerHTML = QA_DATA.map((item, i) => `
+    <div class="qa-item" id="qa-${i}">
+      <div class="qa-question" onclick="toggleQA(${i})">
+        <div class="qa-q-icon">Q</div>
+        <div class="qa-q-text">${item.q}</div>
+        ${isAdminMode ? `<button class="admin-edit-btn-sm" style="margin-right:4px;" onclick="event.stopPropagation();openEditQA(${i})">✏️</button>` : ''}
+        <div class="qa-chevron">▼</div>
+      </div>
+      <div class="qa-answer">
+        <div class="qa-a-icon">A</div>
+        <div class="qa-a-text">${item.a}</div>
+      </div>
+    </div>
+  `).join('') + (isAdminMode ? `<button class="edit-save-btn" style="margin-top:8px;" onclick="openAddQA()">＋ Q&Aを追加</button>` : '');
+}
+
+function toggleQA(i) {
+  document.getElementById('qa-'+i).classList.toggle('open');
+}
+
+// ===== QUIZ =====
+function buildQuiz() {
+  const cont = document.getElementById('quizContainer');
+  cont.innerHTML = `
+    <div class="quiz-start" id="quizStart">
+      <div class="quiz-start-icon">📝</div>
+      <div class="quiz-start-title">天界の確認テスト</div>
+      <div class="quiz-start-desc">
+        ${QUIZ_DATA.length}問の確認テストです。<br>ルールの理解度をチェックしましょう。<br>80点以上で合格です！
+      </div>
+      <button class="start-btn" onclick="startQuiz()">テストを始める ✦</button>
+    </div>
+    <div class="quiz-question-area" id="quizQArea">
+      <div class="quiz-progress-wrap">
+        <span class="quiz-progress-num" id="qProgressNum">1/${QUIZ_DATA.length}</span>
+        <div class="quiz-bar-track">
+          <div class="quiz-bar-fill" id="qBarFill" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="quiz-q-card">
+        <div class="quiz-q-num" id="qNum">QUESTION 1</div>
+        <div class="quiz-q-text" id="qText"></div>
+      </div>
+      <div class="quiz-options" id="qOptions"></div>
+      <div class="quiz-explanation" id="qExplanation"></div>
+      <button class="quiz-next-btn" id="qNextBtn" onclick="nextQuestion()">次の問題へ ›</button>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-result-circle">
+        <div class="quiz-score-big" id="rScore"></div>
+        <div class="quiz-score-label">点</div>
+      </div>
+      <div class="quiz-result-msg" id="rMsg"></div>
+      <div class="quiz-result-sub" id="rSub"></div>
+      <button class="retry-btn" onclick="retryQuiz()">もう一度</button>
+      <button class="start-btn" onclick="showPage('home')" style="padding:11px 20px; font-size:13px;">ホームに戻る</button>
+    </div>
+  `;
+}
+
+function startQuiz() {
+  quizState = { started:true, current:0, score:0, answered:false };
+  document.getElementById('quizStart').style.display = 'none';
+  document.getElementById('quizQArea').style.display = 'block';
+  document.getElementById('quizResult').style.display = 'none';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUIZ_DATA[quizState.current];
+  const pct = (quizState.current / QUIZ_DATA.length) * 100;
+  document.getElementById('qProgressNum').textContent = `${quizState.current+1}/${QUIZ_DATA.length}`;
+  document.getElementById('qBarFill').style.width = pct+'%';
+  document.getElementById('qNum').textContent = `QUESTION ${quizState.current+1}`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qOptions').innerHTML = q.opts.map((opt, i) => `
+    <div class="quiz-option" id="qopt-${i}" onclick="selectAnswer(${i})">
+      <div class="quiz-option-bullet">${['A','B','C','D'][i]}</div>
+      ${opt}
+    </div>
+  `).join('');
+  document.getElementById('qExplanation').style.display = 'none';
+  document.getElementById('qNextBtn').style.display = 'none';
+  quizState.answered = false;
+}
+
+function selectAnswer(i) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  const q = QUIZ_DATA[quizState.current];
+  q.opts.forEach((_, idx) => {
+    const el = document.getElementById('qopt-'+idx);
+    if (idx === q.ans) el.classList.add('correct');
+    else if (idx === i) el.classList.add('wrong');
+  });
+  if (i === q.ans) quizState.score++;
+  const expEl = document.getElementById('qExplanation');
+  expEl.textContent = q.exp;
+  expEl.style.display = 'block';
+  const nextBtn = document.getElementById('qNextBtn');
+  nextBtn.style.display = 'block';
+  nextBtn.textContent = quizState.current < QUIZ_DATA.length-1 ? '次の問題へ ›' : '結果を見る ✦';
+}
+
+function nextQuestion() {
+  quizState.current++;
+  if (quizState.current >= QUIZ_DATA.length) showResult();
+  else renderQuestion();
+}
+
+function showResult() {
+  document.getElementById('quizQArea').style.display = 'none';
+  document.getElementById('quizResult').style.display = 'block';
+  const score = Math.round(quizState.score / QUIZ_DATA.length * 100);
+  document.getElementById('rScore').textContent = score;
+  if (score >= 80) {
+    document.getElementById('rMsg').textContent = '✦ 合格おめでとうございます！';
+    document.getElementById('rSub').textContent = '天界のルールをよく理解されています。\n引き続きプレイヤー様への最高の接客を！';
+  } else {
+    document.getElementById('rMsg').textContent = 'もう少し！ルールを復習しましょう';
+    document.getElementById('rSub').textContent = '80点以上で合格です。\nルールブックを読み直してから再挑戦してください。';
+  }
+}
+
+function retryQuiz() {
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizStart').style.display = 'block';
+}
+
+// ===== TOAST =====
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ===========================
+// ===== ADMIN MODE =====
+// ===========================
+
+function startAdminHold() {
+  adminHoldTimer = setTimeout(() => {
+    if (isAdminMode) {
+      logoutAdmin();
+    } else {
+      openLoginModal();
+    }
+  }, 800);
+}
+
+function cancelAdminHold() {
+  clearTimeout(adminHoldTimer);
+}
+
+function openLoginModal() {
+  document.getElementById('loginModal').classList.add('open');
+  document.getElementById('loginInput').value = '';
+  document.getElementById('loginError').style.display = 'none';
+  setTimeout(() => document.getElementById('loginInput').focus(), 300);
+}
+
+function closeLoginModal() {
+  document.getElementById('loginModal').classList.remove('open');
+}
+
+function toggleLoginEye() {
+  const inp = document.getElementById('loginInput');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+function doLogin() {
+  const val = document.getElementById('loginInput').value;
+  if (val === getAdminPW()) {
+    closeLoginModal();
+    enterAdminMode();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginInput').value = '';
+    document.getElementById('loginInput').focus();
+  }
+}
+
+function enterAdminMode() {
+  isAdminMode = true;
+  document.getElementById('adminBar').classList.add('visible');
+  document.getElementById('adminTriggerBtn').style.opacity = '1';
+  document.body.classList.add('admin-active');
+  showToast('⚙️ 管理者モードで起動中');
+  // Rebuild pages that have admin edit buttons
+  buildNG();
+  buildQA();
+  buildChecklist();
+}
+
+function logoutAdmin() {
+  isAdminMode = false;
+  document.getElementById('adminBar').classList.remove('visible');
+  document.getElementById('adminTriggerBtn').style.opacity = '0.35';
+  document.body.classList.remove('admin-active');
+  showToast('管理者モードを終了しました');
+  buildNG();
+  buildQA();
+  buildChecklist();
+  if (currentPage === 'admin') showPage('home');
+}
+
+// ===== ADMIN PANEL =====
+function buildAdminPanel() {
+  const cont = document.getElementById('adminPanelContainer');
+
+  // Check which rules have been modified
+  const modifiedRules = JSON.parse(localStorage.getItem('bunnys_modified_rules') || '{}');
+
+  let html = `
+    <!-- Password change -->
+    <div class="pw-change-form">
+      <div class="pw-change-title">🔑 管理者パスワード変更</div>
+      <div class="edit-field">
+        <div class="edit-label">新しいパスワード</div>
+        <div class="login-input-wrap" style="margin-bottom:8px;">
+          <input type="password" class="login-input" id="newPwInput" placeholder="新しいパスワード（6文字以上）">
+          <span class="login-eye" onclick="togglePwEye('newPwInput')">👁</span>
+        </div>
+      </div>
+      <button class="edit-save-btn" onclick="changeAdminPW()">パスワードを変更する</button>
+    </div>
+
+    <!-- Notices editor -->
+    <div class="admin-section-card">
+      <div class="admin-section-header" onclick="toggleAdminSection('noticesSec')">
+        <div class="admin-section-icon">⚠️</div>
+        <div class="admin-section-name">最重要ルール（ホーム掲示）</div>
+        <div class="admin-section-count">${noticeItems.length}件</div>
+      </div>
+      <div id="noticesSec" style="display:none;">
+        <div class="admin-rule-list">
+          ${noticeItems.map((n,i) => `
+            <div class="admin-rule-row">
+              <div class="admin-rule-row-text">${n.replace(/<[^>]+>/g,'')}</div>
+              <button class="admin-edit-btn-sm" onclick="openEditNotice(${i})">✏️ 編集</button>
+            </div>
+          `).join('')}
+          <button class="edit-save-btn" style="margin-top:8px;" onclick="openAddNotice()">＋ 項目を追加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules by category -->
+    ${CATEGORIES.map(cat => {
+      const rules = RULES[cat.id] || [];
+      return `
+        <div class="admin-section-card">
+          <div class="admin-section-header" onclick="toggleAdminSection('cat_${cat.id}')">
+            <div class="admin-section-icon">${cat.icon}</div>
+            <div class="admin-section-name">${cat.name.replace('\n',' ')}</div>
+            <div class="admin-section-count">${rules.length}件</div>
+          </div>
+          <div id="cat_${cat.id}" style="display:none;">
+            <div class="admin-rule-list">
+              ${rules.map(rule => `
+                <div class="admin-rule-row">
+                  <div class="admin-rule-row-text">
+                    ${rule.title}
+                    ${modifiedRules[rule.id] ? '<span class="admin-rule-row-modified">編集済</span>' : ''}
+                  </div>
+                  <button class="admin-edit-btn-sm" onclick="openEditRule('${cat.id}','${rule.id}')">✏️ 編集</button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('')}
+
+    <!-- NG Collection -->
+    <div class="admin-section-card">
+      <div class="admin-section-header" onclick="toggleAdminSection('ng_admin')">
+        <div class="admin-section-icon">🚫</div>
+        <div class="admin-section-name">接客NG集</div>
+        <div class="admin-section-count">${NG_DATA.length}件</div>
+      </div>
+      <div id="ng_admin" style="display:none;">
+        <div class="admin-rule-list">
+          ${NG_DATA.map((item,i) => `
+            <div class="admin-rule-row">
+              <div class="admin-rule-row-text">${item.title}</div>
+              <button class="admin-edit-btn-sm" onclick="openEditNG(${i})">✏️ 編集</button>
+            </div>
+          `).join('')}
+          <button class="edit-save-btn" style="margin-top:8px;" onclick="openAddNG()">＋ 項目を追加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q&A -->
+    <div class="admin-section-card">
+      <div class="admin-section-header" onclick="toggleAdminSection('qa_admin')">
+        <div class="admin-section-icon">💬</div>
+        <div class="admin-section-name">トラブルQ&A</div>
+        <div class="admin-section-count">${QA_DATA.length}件</div>
+      </div>
+      <div id="qa_admin" style="display:none;">
+        <div class="admin-rule-list">
+          ${QA_DATA.map((item,i) => `
+            <div class="admin-rule-row">
+              <div class="admin-rule-row-text">${item.q.substring(0,30)}…</div>
+              <button class="admin-edit-btn-sm" onclick="openEditQA(${i})">✏️ 編集</button>
+            </div>
+          `).join('')}
+          <button class="edit-save-btn" style="margin-top:8px;" onclick="openAddQA()">＋ Q&Aを追加</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="admin-section-card">
+      <div class="admin-section-header" onclick="toggleAdminSection('cl_admin')">
+        <div class="admin-section-icon">✅</div>
+        <div class="admin-section-name">新人チェックリスト</div>
+        <div class="admin-section-count">${CHECKLIST_DATA.groups.reduce((a,g)=>a+g.items.length,0)}件</div>
+      </div>
+      <div id="cl_admin" style="display:none;">
+        <div class="admin-rule-list">
+          ${CHECKLIST_DATA.groups.map((group,gi) => `
+            <div style="margin-bottom:8px;">
+              <div style="font-size:11px;color:var(--dusty-rose);letter-spacing:0.1em;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;">
+                ${group.title}
+                <button class="admin-edit-btn-sm" onclick="openEditChecklistGroup(${gi})">✏️ グループ編集</button>
+              </div>
+              ${group.items.map((item,ii) => `
+                <div class="admin-rule-row" style="margin-bottom:4px;">
+                  <div class="admin-rule-row-text" style="font-size:12px;">${item.text}</div>
+                  <button class="admin-edit-btn-sm" onclick="openEditChecklistItem(${gi},${ii})">✏️</button>
+                </div>
+              `).join('')}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+
+    <!-- Reset all -->
+    <div style="margin-top:16px; padding: 14px; background:rgba(139,58,58,0.05); border:1px solid rgba(139,58,58,0.2); border-radius:12px;">
+      <div style="font-size:12px;color:var(--dusty-rose);margin-bottom:10px;font-weight:700;">⚠️ データリセット</div>
+      <button class="edit-reset-btn" onclick="resetAllData()" style="width:100%;">すべての編集をリセットしてデフォルトに戻す</button>
+    </div>
+  `;
+
+  cont.innerHTML = html;
+}
+
+function toggleAdminSection(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+
+function togglePwEye(inputId) {
+  const inp = document.getElementById(inputId);
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
+
+function changeAdminPW() {
+  const val = document.getElementById('newPwInput').value.trim();
+  if (val.length < 6) { showToast('6文字以上で設定してください'); return; }
+  localStorage.setItem('bunnys_admin_pw', val);
+  document.getElementById('newPwInput').value = '';
+  showToast('✦ パスワードを変更しました');
+}
+
+function resetAllData() {
+  if (!confirm('すべての編集内容をリセットしてデフォルトに戻しますか？\nこの操作は元に戻せません。')) return;
+  localStorage.removeItem('bunnys_custom_rules');
+  localStorage.removeItem('bunnys_custom_ng');
+  localStorage.removeItem('bunnys_custom_qa');
+  localStorage.removeItem('bunnys_custom_checklist');
+  localStorage.removeItem('bunnys_custom_notices');
+  localStorage.removeItem('bunnys_modified_rules');
+  showToast('✦ リセットしました。再読み込みしてください');
+  setTimeout(() => location.reload(), 1500);
+}
+
+// ===== EDIT MODAL HELPERS =====
+function openEditModal(title, bodyHtml) {
+  document.getElementById('editModalTitle').textContent = title;
+  document.getElementById('editModalBody').innerHTML = bodyHtml;
+  document.getElementById('editModal').classList.add('open');
+}
+
+function closeEditModal() {
+  document.getElementById('editModal').classList.remove('open');
+}
+
+// ===== EDIT RULE =====
+function openEditRule(catId, ruleId) {
+  if (!isAdminMode) return;
+  const rule = Object.values(RULES).flat().find(r => r.id === ruleId);
+
+  let sectionsHtml = rule.sections.map((sec, si) => {
+    let typeTag = sec.body ? 'テキスト' : sec.points ? '箇条書き' : sec.warning ? '注意' : '良い例';
+    let contentHtml = '';
+    if (sec.body !== undefined) {
+      contentHtml = `<div class="edit-field"><div class="edit-label">本文</div><textarea class="edit-textarea" id="sec_body_${si}" rows="4">${escHtml(sec.body||'')}</textarea></div>`;
+
+```
+}
+if (sec.points !== undefined) {
+  contentHtml = `<div class="edit-field"><div class="edit-label">箇条書き（1行1項目）</div><textarea class="edit-textarea" id="sec_points_${si}" rows="6">${(sec.points||[]).join('\n')}</textarea></div>`;
+}
+if (sec.warning !== undefined) {
+  contentHtml = `<div class="edit-field"><div class="edit-label">注意文</div><textarea class="edit-textarea" id="sec_warning_${si}" rows="3">${escHtml(sec.warning||'')}</textarea></div>`;
+}
+if (sec.good !== undefined) {
+  contentHtml = `<div class="edit-field"><div class="edit-label">良い例テキスト</div><textarea class="edit-textarea" id="sec_good_${si}" rows="3">${escHtml(sec.good||'')}</textarea></div>`;
+}
+return `
+  <div class="edit-section-block">
+    <div class="edit-section-label">✦ セクション ${si+1}<span class="edit-type-tag">${typeTag}</span></div>
+    <div class="edit-field"><div class="edit-label">セクションタイトル</div><input class="edit-input" id="sec_title_${si}" value="${escHtml(sec.title)}"></div>
+    ${contentHtml}
+  </div>
+`;
+```
+
+}).join(’’);
+
+const html = `<div class="edit-field"><div class="edit-label">✦ タイトル</div><input class="edit-input" id="edit_title" value="${escHtml(rule.title)}"></div> <div class="edit-field"><div class="edit-label">✦ プレビュー（一覧に表示される説明）</div><input class="edit-input" id="edit_preview" value="${escHtml(rule.preview)}"></div> <div class="edit-field"><div class="edit-label">✦ 重要ルール</div> <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--deep);cursor:pointer;"> <input type="checkbox" id="edit_important" ${rule.important?'checked':''} style="width:18px;height:18px;accent-color:var(--rose);"> 重要ルールとしてマーク（赤枠表示） </label> </div> <div style="font-size:11px;letter-spacing:0.15em;color:var(--dusty-rose);margin-bottom:10px;">✦ セクション内容</div> ${sectionsHtml} <button class="edit-save-btn" onclick="saveEditRule('${catId}','${ruleId}',${rule.sections.length})">✦ 保存する</button> <button class="edit-reset-btn" onclick="resetRule('${catId}','${ruleId}')">この項目をデフォルトに戻す</button>`;
+
+openEditModal(`✏️ ${rule.title}`, html);
+}
+
+function saveEditRule(catId, ruleId, secCount) {
+const rule = Object.values(RULES).flat().find(r => r.id === ruleId);
+
+rule.title    = document.getElementById(‘edit_title’).value;
+rule.preview  = document.getElementById(‘edit_preview’).value;
+rule.important= document.getElementById(‘edit_important’).checked;
+
+rule.sections.forEach((sec, si) => {
+sec.title = document.getElementById(`sec_title_${si}`)?.value || sec.title;
+if (sec.body !== undefined)    sec.body    = document.getElementById(`sec_body_${si}`)?.value || ‘’;
+if (sec.points !== undefined)  sec.points  = (document.getElementById(`sec_points_${si}`)?.value||’’).split(’\n’).filter(l=>l.trim());
+if (sec.warning !== undefined) sec.warning = document.getElementById(`sec_warning_${si}`)?.value || ‘’;
+if (sec.good !== undefined)    sec.good    = document.getElementById(`sec_good_${si}`)?.value || ‘’;
+});
+
+// Persist: save entire RULES for this category
+let saved = JSON.parse(localStorage.getItem(‘bunnys_custom_rules’) || ‘{}’);
+saved[catId] = RULES[catId];
+localStorage.setItem(‘bunnys_custom_rules’, JSON.stringify(saved));
+
+// Track modified
+let mod = JSON.parse(localStorage.getItem(‘bunnys_modified_rules’) || ‘{}’);
+mod[ruleId] = true;
+localStorage.setItem(‘bunnys_modified_rules’, JSON.stringify(mod));
+
+closeEditModal();
+showToast(‘✦ 保存しました’);
+// Refresh current views
+buildCategoryGrid();
+if (currentPage === ‘admin’) buildAdminPanel();
+}
+
+function resetRule(catId, ruleId) {
+let saved = JSON.parse(localStorage.getItem(‘bunnys_custom_rules’) || ‘{}’);
+if (saved[catId]) {
+delete saved[catId];
+localStorage.setItem(‘bunnys_custom_rules’, JSON.stringify(saved));
+}
+let mod = JSON.parse(localStorage.getItem(‘bunnys_modified_rules’) || ‘{}’);
+delete mod[ruleId];
+localStorage.setItem(‘bunnys_modified_rules’, JSON.stringify(mod));
+closeEditModal();
+showToast(‘デフォルトに戻しました。再読み込みで反映されます’);
+setTimeout(() => location.reload(), 1500);
+}
+
+// ===== EDIT NG =====
+function openEditNG(i) {
+if (!isAdminMode) return;
+const item = NG_DATA[i];
+const html = `<div class="edit-field"><div class="edit-label">✦ タイトル</div><input class="edit-input" id="ng_title" value="${escHtml(item.title)}"></div> <div class="edit-field"><div class="edit-label">✦ NG例（赤）</div><textarea class="edit-textarea" id="ng_bad" rows="3">${escHtml(item.bad)}</textarea></div> <div class="edit-field"><div class="edit-label">✦ OK例（緑）</div><textarea class="edit-textarea" id="ng_good" rows="3">${escHtml(item.good)}</textarea></div> <button class="edit-save-btn" onclick="saveEditNG(${i})">✦ 保存する</button> <button class="edit-reset-btn" style="color:#c97a6e;" onclick="deleteNG(${i})">この項目を削除する</button>`;
+openEditModal(`✏️ NG編集`, html);
+}
+
+function openAddNG() {
+const html = `<div class="edit-field"><div class="edit-label">✦ タイトル</div><input class="edit-input" id="ng_title" value=""></div> <div class="edit-field"><div class="edit-label">✦ NG例（赤）</div><textarea class="edit-textarea" id="ng_bad" rows="3"></textarea></div> <div class="edit-field"><div class="edit-label">✦ OK例（緑）</div><textarea class="edit-textarea" id="ng_good" rows="3"></textarea></div> <button class="edit-save-btn" onclick="saveEditNG(-1)">✦ 追加する</button>`;
+openEditModal(‘＋ NG項目を追加’, html);
+}
+
+function saveEditNG(i) {
+const item = {
+title: document.getElementById(‘ng_title’).value,
+bad:   document.getElementById(‘ng_bad’).value,
+good:  document.getElementById(‘ng_good’).value,
+};
+if (i === -1) NG_DATA.push(item);
+else Object.assign(NG_DATA[i], item);
+localStorage.setItem(‘bunnys_custom_ng’, JSON.stringify(NG_DATA));
+closeEditModal();
+buildNG();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘✦ NG集を保存しました’);
+}
+
+function deleteNG(i) {
+if (!confirm(‘この項目を削除しますか？’)) return;
+NG_DATA.splice(i, 1);
+localStorage.setItem(‘bunnys_custom_ng’, JSON.stringify(NG_DATA));
+closeEditModal();
+buildNG();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘削除しました’);
+}
+
+// ===== EDIT Q&A =====
+function openEditQA(i) {
+if (!isAdminMode) return;
+const item = QA_DATA[i];
+const html = `<div class="edit-field"><div class="edit-label">✦ 質問文</div><textarea class="edit-textarea" id="qa_q" rows="3">${escHtml(item.q)}</textarea></div> <div class="edit-field"><div class="edit-label">✦ 回答文</div><textarea class="edit-textarea" id="qa_a" rows="5">${escHtml(item.a)}</textarea></div> <button class="edit-save-btn" onclick="saveEditQA(${i})">✦ 保存する</button> <button class="edit-reset-btn" style="color:#c97a6e;" onclick="deleteQA(${i})">この項目を削除する</button>`;
+openEditModal(‘✏️ Q&A編集’, html);
+}
+
+function openAddQA() {
+const html = `<div class="edit-field"><div class="edit-label">✦ 質問文</div><textarea class="edit-textarea" id="qa_q" rows="3"></textarea></div> <div class="edit-field"><div class="edit-label">✦ 回答文</div><textarea class="edit-textarea" id="qa_a" rows="5"></textarea></div> <button class="edit-save-btn" onclick="saveEditQA(-1)">✦ 追加する</button>`;
+openEditModal(‘＋ Q&Aを追加’, html);
+}
+
+function saveEditQA(i) {
+const item = {
+q: document.getElementById(‘qa_q’).value,
+a: document.getElementById(‘qa_a’).value,
+};
+if (i === -1) QA_DATA.push(item);
+else Object.assign(QA_DATA[i], item);
+localStorage.setItem(‘bunnys_custom_qa’, JSON.stringify(QA_DATA));
+closeEditModal();
+buildQA();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘✦ Q&Aを保存しました’);
+}
+
+function deleteQA(i) {
+if (!confirm(‘この項目を削除しますか？’)) return;
+QA_DATA.splice(i, 1);
+localStorage.setItem(‘bunnys_custom_qa’, JSON.stringify(QA_DATA));
+closeEditModal();
+buildQA();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘削除しました’);
+}
+
+// ===== EDIT CHECKLIST =====
+function openEditChecklistGroup(gi) {
+const group = CHECKLIST_DATA.groups[gi];
+const html = `<div class="edit-field"><div class="edit-label">✦ グループ名</div><input class="edit-input" id="cl_group_title" value="${escHtml(group.title)}"></div> <div class="edit-field"><div class="edit-label">✦ タスク一覧（1行1項目）</div> <textarea class="edit-textarea" id="cl_group_items" rows="8">${group.items.map(i=>i.text).join('\n')}</textarea> </div> <button class="edit-save-btn" onclick="saveChecklistGroup(${gi})">✦ 保存する</button>`;
+openEditModal(‘✏️ チェックリスト グループ編集’, html);
+}
+
+function openEditChecklistItem(gi, ii) {
+const item = CHECKLIST_DATA.groups[gi].items[ii];
+const html = `<div class="edit-field"><div class="edit-label">✦ タスク内容</div><input class="edit-input" id="cl_item_text" value="${escHtml(item.text)}"></div> <button class="edit-save-btn" onclick="saveChecklistItem(${gi},${ii})">✦ 保存する</button> <button class="edit-reset-btn" style="color:#c97a6e;" onclick="deleteChecklistItem(${gi},${ii})">この項目を削除する</button>`;
+openEditModal(‘✏️ タスク編集’, html);
+}
+
+function saveChecklistGroup(gi) {
+CHECKLIST_DATA.groups[gi].title = document.getElementById(‘cl_group_title’).value;
+const lines = document.getElementById(‘cl_group_items’).value.split(’\n’).filter(l=>l.trim());
+const existingIds = CHECKLIST_DATA.groups[gi].items.map(i=>i.id);
+CHECKLIST_DATA.groups[gi].items = lines.map((text, idx) => ({
+id: existingIds[idx] || `cl_custom_${gi}_${idx}_${Date.now()}`,
+text
+}));
+localStorage.setItem(‘bunnys_custom_checklist’, JSON.stringify(CHECKLIST_DATA.groups));
+closeEditModal();
+buildChecklist();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘✦ チェックリストを保存しました’);
+}
+
+function saveChecklistItem(gi, ii) {
+CHECKLIST_DATA.groups[gi].items[ii].text = document.getElementById(‘cl_item_text’).value;
+localStorage.setItem(‘bunnys_custom_checklist’, JSON.stringify(CHECKLIST_DATA.groups));
+closeEditModal();
+buildChecklist();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘✦ 保存しました’);
+}
+
+function deleteChecklistItem(gi, ii) {
+if (!confirm(‘削除しますか？’)) return;
+CHECKLIST_DATA.groups[gi].items.splice(ii, 1);
+localStorage.setItem(‘bunnys_custom_checklist’, JSON.stringify(CHECKLIST_DATA.groups));
+closeEditModal();
+buildChecklist();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘削除しました’);
+}
+
+// ===== EDIT NOTICES =====
+function openEditNotice(i) {
+const html = `<div class="edit-field"><div class="edit-label">✦ 掲示テキスト（&lt;strong&gt;太字&lt;/strong&gt; タグ使用可）</div> <textarea class="edit-textarea" id="notice_text" rows="3">${escHtml(noticeItems[i])}</textarea> </div> <button class="edit-save-btn" onclick="saveNotice(${i})">✦ 保存する</button> <button class="edit-reset-btn" style="color:#c97a6e;" onclick="deleteNotice(${i})">この項目を削除する</button>`;
+openEditModal(‘✏️ 重要掲示を編集’, html);
+}
+
+function openAddNotice() {
+const html = `<div class="edit-field"><div class="edit-label">✦ 掲示テキスト（&lt;strong&gt;太字&lt;/strong&gt; タグ使用可）</div> <textarea class="edit-textarea" id="notice_text" rows="3"></textarea> </div> <button class="edit-save-btn" onclick="saveNotice(-1)">✦ 追加する</button>`;
+openEditModal(‘＋ 重要掲示を追加’, html);
+}
+
+function saveNotice(i) {
+const val = document.getElementById(‘notice_text’).value;
+if (i === -1) noticeItems.push(val);
+else noticeItems[i] = val;
+localStorage.setItem(‘bunnys_custom_notices’, JSON.stringify(noticeItems));
+closeEditModal();
+renderNotices();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘✦ 保存しました’);
+}
+
+function deleteNotice(i) {
+if (!confirm(‘削除しますか？’)) return;
+noticeItems.splice(i, 1);
+localStorage.setItem(‘bunnys_custom_notices’, JSON.stringify(noticeItems));
+closeEditModal();
+renderNotices();
+if (currentPage === ‘admin’) buildAdminPanel();
+showToast(‘削除しました’);
+}
+
+// ===== UTILS =====
+function escHtml(str) {
+return (str||’’).replace(/&/g,’&’).replace(/</g,’<’).replace(/>/g,’>’).replace(/”/g,’"’);
+}
+
+// Close modals on overlay click
+document.getElementById(‘loginModal’).addEventListener(‘click’, function(e) {
+if (e.target === this) closeLoginModal();
+});
+document.getElementById(‘editModal’).addEventListener(‘click’, function(e) {
+if (e.target === this) closeEditModal();
+});
+
+// ===== START =====
+init();
+</script>
+
+</body>
+</html>
